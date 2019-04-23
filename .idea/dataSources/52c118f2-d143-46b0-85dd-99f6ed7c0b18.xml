@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="ACS_WORK_COPY@localhost">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.15">
+    <root id="1">
+      <ServerVersion>14.0.1000</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="ACS_WORK_COPY">
+      <ObjectId>7</ObjectId>
+      <Current>1</Current>
+      <Visible>1</Visible>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+      <Fingerprint>7.43560/5DB9D6E0-E3BA-4D1A-BD83-A060D6EACA8D@DESKTOP-ANJPSE3</Fingerprint>
+    </database>
+    <database id="3" parent="1" name="BS_BizModelDemo_4_2">
+      <ObjectId>5</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <database id="4" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <database id="5" parent="1" name="model">
+      <ObjectId>3</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <database id="6" parent="1" name="msdb">
+      <ObjectId>4</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <database id="7" parent="1" name="tempdb">
+      <ObjectId>2</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <database id="8" parent="1" name="test_for_diplom">
+      <ObjectId>6</ObjectId>
+      <Collation>Cyrillic_General_CI_AS</Collation>
+    </database>
+    <schema id="9" parent="2" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="10" parent="2" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="11" parent="2" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="12" parent="2" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="13" parent="2" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="14" parent="2" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="15" parent="2" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="16" parent="2" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="17" parent="2" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="18" parent="2" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="19" parent="2" name="dbo">
+      <ObjectId>1</ObjectId>
+      <IntrospectionTimestamp>2019-04-21.21:37:30.900</IntrospectionTimestamp>
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="20" parent="2" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="21" parent="2" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <table id="22" parent="19" name="Departments_Sections">
+      <ObjectId>997578592</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:21.800</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-20.19:43:37.250</ModifiedTimestamp>
+    </table>
+    <table id="23" parent="19" name="Details">
+      <ObjectId>1125579048</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:22.117</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:32:28.470</ModifiedTimestamp>
+    </table>
+    <table id="24" parent="19" name="Operations">
+      <ObjectId>1429580131</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:31:05.440</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:31:05.440</ModifiedTimestamp>
+    </table>
+    <table id="25" parent="19" name="Orders">
+      <ObjectId>1541580530</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:32:28.437</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:32:28.437</ModifiedTimestamp>
+    </table>
+    <table id="26" parent="19" name="Professions">
+      <ObjectId>901578250</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:20.460</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-21.21:37:28.383</ModifiedTimestamp>
+    </table>
+    <table id="27" parent="19" name="Replaceable_Professions">
+      <ObjectId>1589580701</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:32:39.887</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:32:39.887</ModifiedTimestamp>
+    </table>
+    <table id="28" parent="19" name="Workers">
+      <ObjectId>1061578820</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:21.950</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-20.15:38:09.367</ModifiedTimestamp>
+    </table>
+    <column id="29" parent="22" name="Department_Id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="30" parent="22" name="Department_Code">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="22" name="Department_Name">
+      <Position>3</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+    </column>
+    <column id="32" parent="22" name="Department_Parent_Id">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="33" parent="22" name="department_parent_name">
+      <Position>5</Position>
+      <DataType>varchar(100 char)|0s</DataType>
+    </column>
+    <index id="34" parent="22" name="PK__Departme__3B326FF7D69549F2">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Department_Id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="35" parent="22" name="PK__Departme__3B326FF7D69549F2">
+      <ObjectId>1013578649</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:19:21.863</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:21.863</ModifiedTimestamp>
+      <ColNames>Department_Id</ColNames>
+      <UnderlyingIndexName>PK__Departme__3B326FF7D69549F2</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="36" parent="23" name="Detail_Id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="37" parent="23" name="Detail_Code">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="38" parent="23" name="Detail_Name">
+      <Position>3</Position>
+      <DataType>varchar(90 char)|0s</DataType>
+    </column>
+    <index id="39" parent="23" name="PK__Details__47308351315356AD">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Detail_Id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="40" parent="23" name="UQ__Details__6C18E43E3B34D659">
+      <Position>2</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Detail_Name</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="41" parent="23" name="PK__Details__47308351315356AD">
+      <ObjectId>1141579105</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:19:22.133</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:22.133</ModifiedTimestamp>
+      <ColNames>Detail_Id</ColNames>
+      <UnderlyingIndexName>PK__Details__47308351315356AD</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="42" parent="23" name="UQ__Details__6C18E43E3B34D659">
+      <ObjectId>1157579162</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:19:22.137</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:22.137</ModifiedTimestamp>
+      <ColNames>Detail_Name</ColNames>
+      <UnderlyingIndexName>UQ__Details__6C18E43E3B34D659</UnderlyingIndexName>
+    </key>
+    <column id="43" parent="24" name="Operation_ID">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="44" parent="24" name="Operation_Detail_Id">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="45" parent="24" name="Operation_Name">
+      <Position>3</Position>
+      <DataType>varchar(60 char)|0s</DataType>
+    </column>
+    <column id="46" parent="24" name="Operation_Stage_Number">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="47" parent="24" name="Operation_Section_Id">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="48" parent="24" name="Operation_Profession_ID">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="49" parent="24" name="Operation_Time_Execution">
+      <Position>7</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <index id="50" parent="24" name="PK__Operatio__D9469EE7CE58A413">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Operation_ID</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="24" name="PK__Operatio__D9469EE7CE58A413">
+      <ObjectId>1445580188</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:31:05.440</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:31:05.440</ModifiedTimestamp>
+      <ColNames>Operation_ID</ColNames>
+      <UnderlyingIndexName>PK__Operatio__D9469EE7CE58A413</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="24" name="Detail_Id">
+      <ObjectId>1461580245</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:31:05.440</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:31:05.440</ModifiedTimestamp>
+      <ColNames>Operation_Detail_Id</ColNames>
+      <RefTableId>1125579048</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Details</RefTableName>
+      <RefKeyName>PK__Details__47308351315356AD</RefKeyName>
+      <RefColNames>Detail_Id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="53" parent="24" name="Section_Department_ID">
+      <ObjectId>1493580359</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:31:05.480</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:31:05.480</ModifiedTimestamp>
+      <ColNames>Operation_Section_Id</ColNames>
+      <RefTableId>997578592</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Departments_Sections</RefTableName>
+      <RefKeyName>PK__Departme__3B326FF7D69549F2</RefKeyName>
+      <RefColNames>Section_ID</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="24" name="Profession_ID">
+      <ObjectId>1477580302</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:31:05.470</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:31:05.470</ModifiedTimestamp>
+      <ColNames>Operation_Profession_ID</ColNames>
+      <RefTableId>901578250</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Professions</RefTableName>
+      <RefKeyName>PK__Professi__B7C60BEE10CB955F</RefKeyName>
+      <RefColNames>Profession_Id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="55" parent="25" name="Order_Id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="56" parent="25" name="Order_Detail_Id">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="25" name="Order_Detail_Quantity">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="58" parent="25" name="Order_Release_Date">
+      <Position>4</Position>
+      <DataType>datetime|0s</DataType>
+    </column>
+    <index id="59" parent="25" name="PK__Orders__F1E4607B2FB334FB">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Order_Id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="25" name="PK__Orders__F1E4607B2FB334FB">
+      <ObjectId>1557580587</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:32:28.440</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:32:28.440</ModifiedTimestamp>
+      <ColNames>Order_Id</ColNames>
+      <UnderlyingIndexName>PK__Orders__F1E4607B2FB334FB</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="25" name="Order_Detail_Id">
+      <ObjectId>1573580644</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:32:28.440</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:32:28.440</ModifiedTimestamp>
+      <ColNames>Order_Detail_Id</ColNames>
+      <RefTableId>1125579048</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Details</RefTableName>
+      <RefKeyName>PK__Details__47308351315356AD</RefKeyName>
+      <RefColNames>Detail_Id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="62" parent="26" name="Profession_Id">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="63" parent="26" name="Profession_Code">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="64" parent="26" name="Profession_Name">
+      <Position>3</Position>
+      <DataType>varchar(60 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="65" parent="26" name="PK__Professi__B7C60BEE10CB955F">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Profession_Id</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="66" parent="26" name="PK__Professi__B7C60BEE10CB955F">
+      <ObjectId>917578307</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:19:21.413</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:21.413</ModifiedTimestamp>
+      <ColNames>Profession_Id</ColNames>
+      <UnderlyingIndexName>PK__Professi__B7C60BEE10CB955F</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="27" name="Department_ID">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="68" parent="27" name="Profession_Code">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="69" parent="27" name="Profession_Code_New">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="70" parent="28" name="Worker_ID">
+      <Position>1</Position>
+      <SequenceIdentity>1</SequenceIdentity>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="28" name="Worker_Surname">
+      <Position>2</Position>
+      <DataType>varchar(35 char)|0s</DataType>
+    </column>
+    <column id="72" parent="28" name="Worker_Name">
+      <Position>3</Position>
+      <DataType>varchar(35 char)|0s</DataType>
+    </column>
+    <column id="73" parent="28" name="Worker_Patronymic">
+      <Position>4</Position>
+      <DataType>varchar(35 char)|0s</DataType>
+    </column>
+    <column id="74" parent="28" name="Worker_Profession_ID">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="75" parent="28" name="Worker_Section_ID">
+      <Position>6</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="76" parent="28" name="Worker_Payment_Type">
+      <Position>7</Position>
+      <DataType>tinyint|0s</DataType>
+    </column>
+    <column id="77" parent="28" name="Worker_Count_Hours">
+      <Position>8</Position>
+      <DataType>float|0s</DataType>
+    </column>
+    <index id="78" parent="28" name="PK__Workers__F35E9FF470F86D11">
+      <Position>1</Position>
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>Worker_ID</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="79" parent="28" name="PK__Workers__F35E9FF470F86D11">
+      <ObjectId>1077578877</ObjectId>
+      <NameSurrogate>1</NameSurrogate>
+      <CreatedTimestamp>2019-04-11.01:19:22.090</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:22.090</ModifiedTimestamp>
+      <ColNames>Worker_ID</ColNames>
+      <UnderlyingIndexName>PK__Workers__F35E9FF470F86D11</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="80" parent="28" name="Professin_ID">
+      <ObjectId>1093578934</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:22.093</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:22.093</ModifiedTimestamp>
+      <ColNames>Worker_Profession_ID</ColNames>
+      <RefTableId>901578250</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Professions</RefTableName>
+      <RefKeyName>PK__Professi__B7C60BEE10CB955F</RefKeyName>
+      <RefColNames>Profession_Id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="81" parent="28" name="Section_ID">
+      <ObjectId>1109578991</ObjectId>
+      <CreatedTimestamp>2019-04-11.01:19:22.113</CreatedTimestamp>
+      <ModifiedTimestamp>2019-04-11.01:19:22.113</ModifiedTimestamp>
+      <ColNames>Worker_Section_ID</ColNames>
+      <RefTableId>997578592</RefTableId>
+      <RefSchemaName>dbo</RefSchemaName>
+      <RefTableName>Departments_Sections</RefTableName>
+      <RefKeyName>PK__Departme__3B326FF7D69549F2</RefKeyName>
+      <RefColNames>Department_Id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+  </database-model>
+</dataSource>
