@@ -7,6 +7,7 @@ import Diplom.hibernate.util.HibernateSessionFactory;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -152,6 +153,8 @@ public class WorkersFrameController {
                 return cell;
             }
         });
+
+
 
         cbWorkProf.setItems(profData);
         cbWorkDep.setItems(departmentsData);
