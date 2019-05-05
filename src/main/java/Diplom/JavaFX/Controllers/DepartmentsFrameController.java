@@ -140,8 +140,6 @@ public class DepartmentsFrameController {
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
             Query query = session.createQuery("FROM DepartmentsSectionsEntity where Department_Parent_Id = 0");
             List<DepartmentsSectionsEntity> departmentsEntities = query.list();
-
-
             ObservableList<DepartmentsSectionsEntity> depData = FXCollections.observableList(departmentsEntities);
             for (DepartmentsSectionsEntity item :depData){
                 dep_parent = new TreeItem<DepartmentsSectionsEntity>(item);
@@ -155,10 +153,6 @@ public class DepartmentsFrameController {
                     dep_child = new TreeItem<DepartmentsSectionsEntity>(item1);
                     dep_parent.getChildren().addAll(dep_child);
                 }
-
-
-
-
                 itemRoot.getChildren().addAll(dep_parent);
             }
             ttvDepartments.setRoot(itemRoot);
@@ -166,7 +160,6 @@ public class DepartmentsFrameController {
             ttvDepartments.getSelectionModel().selectFirst();
             getSelectedDepartment();
             session.close();
-            //HibernateSessionFactory.shutdown();
         }
         catch (Exception e){
             System.out.println(e);

@@ -11,6 +11,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -52,14 +53,14 @@ public class WorkersFrameController {
     @FXML
     private TextField fieldWorkProf;
     @FXML
-    private ComboBox<DepartmentsSectionsEntity> cbWorkDep;
+    private ComboBox cbWorkDep;
 
     @FXML
-    private ComboBox<DepartmentsSectionsEntity> cbWorkArea;
+    private ComboBox cbWorkArea;
     @FXML
     private TextField fieldWorkTime;
     @FXML
-    private ComboBox<ProfessionsEntity> cbWorkProf;
+    private ComboBox cbWorkProf;
 
 
     private Executor exec;
@@ -96,69 +97,30 @@ public class WorkersFrameController {
         Query query = session.createQuery("FROM DepartmentsSectionsEntity where Department_Parent_Id = :parent_id");
         query.setParameter("parent_id", parentId);
         ObservableList<DepartmentsSectionsEntity> areasData = FXCollections.observableList(query.list());
-
-        cbWorkProf.setCellFactory(new Callback<ListView<ProfessionsEntity>, ListCell<ProfessionsEntity>>() {
-            @Override
-            public ListCell<ProfessionsEntity> call(ListView<ProfessionsEntity> param) {
-                final ListCell<ProfessionsEntity> cell = new ListCell<ProfessionsEntity>(){
-                    @Override
-                    protected void updateItem(ProfessionsEntity professionsEntity, boolean bln){
-                        super.updateItem(professionsEntity, bln);
-                        if(professionsEntity != null){
-                            setText(professionsEntity.getProfessionName());
-                        }
-                        else{
-                            setText(null);
-
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-
-        cbWorkArea.setCellFactory(new Callback<ListView<DepartmentsSectionsEntity>, ListCell<DepartmentsSectionsEntity>>() {
-            @Override
-            public ListCell<DepartmentsSectionsEntity> call(ListView<DepartmentsSectionsEntity> param) {
-                final ListCell<DepartmentsSectionsEntity> cell = new ListCell<DepartmentsSectionsEntity>(){
-                    @Override
-                    protected void updateItem(DepartmentsSectionsEntity departmentsSectionsEntity, boolean bln){
-                        super.updateItem(departmentsSectionsEntity, bln);
-                        if(departmentsSectionsEntity != null){
-                            setText(departmentsSectionsEntity.getDepartmentName());
-                        }
-                        else{
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
-        cbWorkDep.setCellFactory(new Callback<ListView<DepartmentsSectionsEntity>, ListCell<DepartmentsSectionsEntity>>() {
-            @Override
-            public ListCell<DepartmentsSectionsEntity> call(ListView<DepartmentsSectionsEntity> param) {
-                final ListCell<DepartmentsSectionsEntity> cell = new ListCell<DepartmentsSectionsEntity>(){
-                    @Override
-                    protected void updateItem(DepartmentsSectionsEntity departmentsSectionsEntity, boolean bln){
-                        super.updateItem(departmentsSectionsEntity, bln);
-                        if(departmentsSectionsEntity != null){
-                            setText(departmentsSectionsEntity.getDepartmentName());
-                        }
-                        else{
-                            setText(null);
-                        }
-                    }
-                };
-                return cell;
-            }
-        });
+        cbWorkProf.getSelectionModel().selectFirst();
 
 
+        ObservableMap<Integer, String> depMap = FXCollections.observableHashMap();
+        ObservableList depList = FXCollections.observableArrayList();
 
-        cbWorkProf.setItems(profData);
-        cbWorkDep.setItems(departmentsData);
-        cbWorkArea.setItems(areasData);
+        ObservableList areaList = FXCollections.observableArrayList();
+        ObservableList profList = FXCollections.observableArrayList();
+        for(DepartmentsSectionsEntity item1 : departmentsData){
+            depList.add(item1.getDepartmentName());
+        }
+
+        for(DepartmentsSectionsEntity item2 : areasData){
+            areaList.add(item2.getDepartmentName());
+        }
+
+        for(ProfessionsEntity item3 : profData){
+            profList.add(item3.getProfessionName());
+        }
+
+
+        cbWorkProf.setItems(profList);
+        cbWorkDep.setItems(depList);
+        cbWorkArea.setItems(areaList);
 
 
         getSelectedWorker();
@@ -175,18 +137,18 @@ public class WorkersFrameController {
             fieldWorkName.setText(workersEntity.getWorkerName());
             fieldWorkPatronymic.setText(workersEntity.getWorkerPatronymic());
             fieldWorkTime.setText(workersEntity.getWorkerCountHours()+"");
-            cbWorkProf.setValue(workersEntity.getProfession());
-            cbWorkProf.getSelectionModel().selectFirst();
+            cbWorkProf.setValue(workersEntity.getProfession().getProfessionName());
 
             if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment() != null){
-                cbWorkDep.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment());
+                cbWorkDep.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentParentName());
 
             }
             else{
                 cbWorkDep.setValue(null);
             }
             if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName() != null){
-                cbWorkArea.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment());
+                cbWorkArea.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName());
+
             }
             else{
                 cbWorkArea.setValue(null);

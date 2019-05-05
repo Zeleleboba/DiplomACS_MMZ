@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="668.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.DetailsFrameController">
    <children>
       <SplitPane dividerPositions="0.5906623235613464" layoutX="362.0" layoutY="139.0" prefHeight="529.0" prefWidth="923.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -21,14 +21,14 @@
                <children>
                   <TreeTableView fx:id="ttvDetails" editable="true" layoutX="135.0" layoutY="187.0" prefHeight="527.0" prefWidth="380.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TreeTableColumn fx:id="colDetName" prefWidth="75.0" text="Название детали" />
-                        <TreeTableColumn fx:id="colDetOp" prefWidth="115.0" text="Процесс" />
-                        <TreeTableColumn fx:id="colDetProf" prefWidth="75.0" text="Профессия" />
-                        <TreeTableColumn fx:id="colDetTime" prefWidth="45.0" text="Длительность процесса, мин" />
+                      <TreeTableColumn fx:id="colDetailName" prefWidth="75.0" text="Название детали" />
+                        <TreeTableColumn fx:id="colDetailOperation" prefWidth="115.0" text="Процесс" />
+                        <TreeTableColumn fx:id="colDetailProfession" prefWidth="75.0" text="Профессия" />
+                        <TreeTableColumn fx:id="colDetailOpertionTime" prefWidth="45.0" text="Длительность процесса, мин" />
                         <TreeTableColumn prefWidth="75.0" text="Локация">
                            <columns>
-                              <TreeTableColumn fx:id="colDetDep" prefWidth="75.0" text="Цех" />
-                              <TreeTableColumn fx:id="colDetArea" prefWidth="75.0" text="Отделение" />
+                              <TreeTableColumn fx:id="colDetailDepartment" prefWidth="75.0" text="Цех" />
+                              <TreeTableColumn fx:id="colDetailArea" prefWidth="75.0" text="Отделение" />
                            </columns></TreeTableColumn>
                     </columns>
                      <columnResizePolicy>
@@ -61,20 +61,20 @@
                         <Label text="Этап" GridPane.rowIndex="1" />
                         <Label text="Процесс" GridPane.rowIndex="2" />
                         <Label text="Цех" GridPane.rowIndex="3" />
-                        <ComboBox fx:id="cbDetArea" prefHeight="25.0" prefWidth="217.0" promptText="Отделение" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <ComboBox fx:id="cbDetailArea" prefHeight="25.0" prefWidth="217.0" promptText="Отделение" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                         <Label text="Отделение" GridPane.rowIndex="4" />
                         <TextField fx:id="fieldDetName" prefHeight="25.0" prefWidth="200.0" promptText="Наименование детали" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-                        <ComboBox fx:id="cbDetDep" prefHeight="25.0" prefWidth="190.0" promptText="Цех" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextArea fx:id="areaDetProcName" prefHeight="200.0" prefWidth="200.0" promptText="Наименование процесса" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <ComboBox fx:id="cbDetailDepartment" prefHeight="25.0" prefWidth="190.0" promptText="Цех" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextArea fx:id="areaDetailOperation" prefHeight="200.0" prefWidth="200.0" promptText="Наименование процесса" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label text="Профессия" GridPane.rowIndex="5" />
-                        <ComboBox fx:id="cbDetProf" prefHeight="25.0" prefWidth="216.0" promptText="Профессия" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="cbDetailProfession" prefHeight="25.0" prefWidth="216.0" promptText="Профессия" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                         <Label text="Среднее время выполнения, мин." GridPane.rowIndex="6" />
-                        <TextField fx:id="fieldDetTime" prefHeight="25.0" prefWidth="200.0" promptText="Время" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="fieldDetailOperationTime" prefHeight="25.0" prefWidth="200.0" promptText="Время" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Удалить" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="134.0" text="Добавить" GridPane.rowIndex="7" />
                         <Button fx:id="btnUpdateInfo" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="Сохранить" GridPane.rowIndex="8" />
                         <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="109.0" text="Редактировать" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <TextField fx:id="fieldDetStage" prefHeight="25.0" prefWidth="200.0" promptText="Этап" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="fieldDetailStage" prefHeight="25.0" prefWidth="200.0" promptText="Этап" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
                </children>

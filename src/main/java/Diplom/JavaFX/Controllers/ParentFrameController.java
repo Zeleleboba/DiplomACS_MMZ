@@ -32,8 +32,8 @@ public class ParentFrameController {
 
     public void initialize(){
         try{
-            data_form.getChildren().addAll(workers, departments,professions, details);
-            ACS_MMZ.getChildren().addAll(data_form, analyze,plots);
+            data_form.getChildren().addAll(workers, departments,professions);
+            ACS_MMZ.getChildren().addAll(data_form, analyze);
             treeViewACS.setRoot(ACS_MMZ);
             treeViewACS.setShowRoot(true);
         }
@@ -55,6 +55,9 @@ public class ParentFrameController {
                 }
                 else if(newValue == details) {
                     loader.setLocation(ParentFrameController.class.getResource("/Frames/DetailsFrame.fxml"));
+                }
+                else if(newValue == analyze) {
+                    loader.setLocation(ParentFrameController.class.getResource("/Frames/CalculationFrame.fxml"));
                 }
                 anchor_pane_get = loader.load();
                 bpParent.setCenter(anchor_pane_get);

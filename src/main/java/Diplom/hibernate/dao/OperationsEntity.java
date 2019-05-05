@@ -10,6 +10,18 @@ public class OperationsEntity {
     private Integer operationStageNumber;
     private Double operationTimeExecution;
     private ProfessionsEntity professionsByOperationProfessionId;
+    private  DetailsEntity detail;
+    @ManyToOne
+    @JoinColumn(name = "Operation_Detail_Id")
+    public DetailsEntity getDetail(){
+        return  this.detail;
+    }
+    public void setDetail(DetailsEntity detail){
+        this.detail = detail;
+    }
+
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

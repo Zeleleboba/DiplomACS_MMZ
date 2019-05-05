@@ -1,6 +1,8 @@
 package Diplom.hibernate.dao;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Details", schema = "dbo", catalog = "ACS_WORK_COPY")
@@ -8,6 +10,22 @@ public class DetailsEntity {
     private int detailId;
     private Integer detailCode;
     private String detailName;
+    private Set<OperationsEntity> operations= new HashSet<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    public Set<OperationsEntity> getOperations(){
+        return this.operations;
+    }
+
+    public void  setOperations(Set<OperationsEntity> operations){
+        this.operations = operations;
+    }
+    public void addOperations(OperationsEntity operation){
+        operation.setDetail(this);
+        this.operations.add(operation);
+    }
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
