@@ -7,9 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
@@ -24,7 +22,7 @@ public class CalculationFrameController {
     @FXML private ComboBox cbDepartments;
     @FXML private ComboBox cbAreas;
     @FXML private ComboBox cbProfessions;
-
+    private  ParentFrameController parentFrameController = new ParentFrameController();
 
     String openDate, closeDate;
 
@@ -38,6 +36,7 @@ public class CalculationFrameController {
             return t;
         });
         prepareData();
+
     }
 
 
@@ -129,4 +128,18 @@ public class CalculationFrameController {
 
 
     }
+
+
+    @FXML private void CalculateAction(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
+        alert.setHeaderText("Проивести расчеты?");
+        alert.setContentText(dpOpenDate.getValue()+"");
+        alert.showAndWait().ifPresent(rs -> {
+            if (rs == ButtonType.OK) {
+                System.out.println("Pressed OK.");
+            }
+        });
+    }
+
 }

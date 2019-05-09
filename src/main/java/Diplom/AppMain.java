@@ -3,7 +3,6 @@ package Diplom;
 import Diplom.hibernate.util.HibernateSessionFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -23,6 +22,7 @@ public class AppMain extends Application {
             loader.setLocation(AppMain.class.getResource("/Frames/ParentFrame.fxml"));
             rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
+            primaryStage.getIcons().add(new Image("/images/gary_snail.png"));
             primaryStage.setScene(scene);
             primaryStage.show();
         }

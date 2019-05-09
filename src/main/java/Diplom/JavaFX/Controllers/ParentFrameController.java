@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import javafx.scene.image.Image;
@@ -12,10 +13,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 public class ParentFrameController {
-    @FXML
-    private TreeView<String> treeViewACS;
-    @FXML
-    private BorderPane bpParent;
+    @FXML   private TreeView<String> treeViewACS;
+    @FXML   private BorderPane bpParent;
+    @FXML   private Label lblStatus;
 
     private TreeItem<String> workers = new TreeItem<String>("Персонал");
     private TreeItem<String> departments = new TreeItem<String>("Цеха");
@@ -33,7 +33,15 @@ public class ParentFrameController {
     public void initialize(){
         try{
             data_form.getChildren().addAll(workers, departments,professions);
+            data_form.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/plan.png"), 20, 20, false, true)));
+            workers.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/personal.png"), 20, 20, false, true)));
+            professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pepega.png"), 20, 20, false, true)));
+            professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pepega.png"), 20, 20, false, true)));
+            analyze.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/calc.png"), 20, 20, false, true)));
+
             ACS_MMZ.getChildren().addAll(data_form, analyze);
+            ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.gif"), 24, 24, false, true)));
+
             treeViewACS.setRoot(ACS_MMZ);
             treeViewACS.setShowRoot(true);
         }
@@ -70,6 +78,7 @@ public class ParentFrameController {
 
 
     }
+
 
 
 
