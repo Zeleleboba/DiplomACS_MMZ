@@ -10,7 +10,7 @@ public class DBUtil {
 
     private static Connection conn = null;
 
-    private static final String connStr =  "jdbc:sqlserver://localhost:1433;database=test_for_diplom; user=admin; password=Jaguar110";
+    private static final String connStr =  "jdbc:sqlserver://localhost:1433;database=ACS_WORK_COPY; user=admin; password=Jaguar110";
 
 
 
