@@ -4,7 +4,6 @@
     <list default="true" id="88be96bf-816c-4149-9796-6914fc061df5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Diplom/hibernate/util/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Diplom/hibernate/util/DBUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,14 +68,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="145" column="32" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+            <state relative-caret-position="430">
+              <caret line="258" column="97" selection-start-line="258" selection-start-column="97" selection-end-line="258" selection-end-column="97" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1094#1118#0" expanded="true" />
                 <element signature="e#2239#2622#0" />
                 <element signature="class#2820:4020" />
                 <element signature="class#4055:5313" />
+                <element signature="e#5642#6802#1" />
+                <element signature="class#7416:7936" />
+                <element signature="class#8079:8599" />
+                <element signature="class#8751:9271" />
               </folding>
             </state>
           </provider>
@@ -167,9 +170,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="974" />
+    <option name="x" value="-7" />
+    <option name="width" value="1099" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -383,7 +385,7 @@
       <workItem from="1557243485733" duration="1678000" />
       <workItem from="1557418114767" duration="10398000" />
       <workItem from="1557483358097" duration="9296000" />
-      <workItem from="1557519913476" duration="12163000" />
+      <workItem from="1557519913476" duration="22016000" />
     </task>
     <task id="LOCAL-00001" summary="23.04 Копаюсь с комбобоксами">
       <created>1556040511859</created>
@@ -406,11 +408,18 @@
       <option name="project" value="LOCAL" />
       <updated>1557421371714</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="09/05 Расчет с JPA Hibernate">
+      <created>1557584758991</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1557584758992</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="175080000" />
+    <option name="totallyTimeSpent" value="184933000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,7 +444,7 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31419286" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.5817985" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -926,14 +935,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="145" column="32" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+        <state relative-caret-position="430">
+          <caret line="258" column="97" selection-start-line="258" selection-start-column="97" selection-end-line="258" selection-end-column="97" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1094#1118#0" expanded="true" />
             <element signature="e#2239#2622#0" />
             <element signature="class#2820:4020" />
             <element signature="class#4055:5313" />
+            <element signature="e#5642#6802#1" />
+            <element signature="class#7416:7936" />
+            <element signature="class#8079:8599" />
+            <element signature="class#8751:9271" />
           </folding>
         </state>
       </provider>
