@@ -4,17 +4,21 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="510.0" prefWidth="1084.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.CalculationFrameController">
+<AnchorPane prefHeight="510.0" prefWidth="1291.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.CalculationFrameController">
    <children>
-      <SplitPane dividerPositions="0.5" layoutX="198.0" layoutY="124.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.43503937007874016" layoutX="198.0" layoutY="124.0" orientation="VERTICAL" prefHeight="510.0" prefWidth="791.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
-          <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane fx:id="upperAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="218.0" prefWidth="1141.0">
                <children>
                   <GridPane layoutX="14.0" layoutY="-7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -33,20 +37,72 @@
                      <children>
                         <DatePicker fx:id="dpOpenDate" prefHeight="25.0" prefWidth="175.0" promptText="Откр. дата" showWeekNumbers="true" GridPane.columnIndex="3" />
                         <DatePicker fx:id="dpCloseDate" prefHeight="25.0" prefWidth="177.0" promptText="Закр. дата" showWeekNumbers="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Замещения профессий" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Перемещения по участкам" GridPane.columnIndex="5" />
-                        <CheckBox mnemonicParsing="false" text="Сверхурочные работы" GridPane.columnIndex="4" />
-                        <CheckBox mnemonicParsing="false" text="Работы по субботам" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Перемещения по цехам" GridPane.columnIndex="6" />
+                        <CheckBox fx:id="chbDepartmentMove" mnemonicParsing="false" text="Замещения профессий" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chbAreaMove" mnemonicParsing="false" text="Перемещения по участкам" GridPane.columnIndex="5" />
+                        <CheckBox fx:id="chbOverworking" mnemonicParsing="false" text="Сверхурочные работы" GridPane.columnIndex="4" />
+                        <CheckBox fx:id="chbWorkingSaturdays" mnemonicParsing="false" text="Работы по субботам" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chbReplace" mnemonicParsing="false" text="Перемещения по цехам" GridPane.columnIndex="6" />
                         <ComboBox fx:id="cbAreas" prefHeight="25.0" prefWidth="220.0" promptText="Участок" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <ComboBox fx:id="cbProfessions" prefHeight="25.0" prefWidth="274.0" promptText="Профессия" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <ComboBox fx:id="cbDepartments" prefHeight="25.0" prefWidth="293.0" promptText="Цех" GridPane.rowIndex="1" />
-                        <Button fx:id="btnCalculate" mnemonicParsing="false" onAction="#CalculateAction" prefHeight="25.0" prefWidth="170.0" text="Рассчитать" />
+                        <Button fx:id="btnCalculate" maxHeight="25.0" minHeight="25.0" mnemonicParsing="false" onAction="#CalculateAction" prefHeight="25.0" prefWidth="37.0" style="-fx-background-color: #98FB98;" text="✔" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font></Button>
+                        <Label text="Номер цеха" />
+                        <Label text="Номер участка" GridPane.columnIndex="1" />
+                        <Label text="Шифр профессии" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                </children>
             </AnchorPane>
-          <AnchorPane fx:id="lowerAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" layoutX="431.0" layoutY="14.0" orientation="VERTICAL" prefHeight="251.0" prefWidth="1082.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TableView layoutX="152.0" layoutY="-31.0" prefHeight="138.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="Цех" />
+                                  <TableColumn prefWidth="75.0" text="Участок" />
+                                    <TableColumn prefWidth="75.0" text="Профессия" />
+                                    <TableColumn prefWidth="75.0" text="Дата" />
+                                    <TableColumn prefWidth="75.0" text="Работников">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Числится" />
+                                          <TableColumn prefWidth="75.0" text="Необходимо" />
+                                          <TableColumn prefWidth="75.0" text="Оптимально" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" text="Фонд рабочего времени">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Начальный" />
+                                          <TableColumn prefWidth="75.0" text="Оптимальный" />
+                                          <TableColumn prefWidth="75.0" text="Требуемый" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="75.0" text="Работ по субботам" />
+                                    <TableColumn prefWidth="75.0" text="Сверхурочных работ" />
+                                    <TableColumn prefWidth="75.0" text="Перемещения">
+                                       <columns>
+                                          <TableColumn prefWidth="75.0" text="Цех" />
+                                          <TableColumn prefWidth="75.0" text="Участок" />
+                                          <TableColumn prefWidth="75.0" text="Профессия" />
+                                          <TableColumn prefWidth="75.0" text="Количество работников" />
+                                       </columns>
+                                    </TableColumn>
+                                </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane fx:id="lowerAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                    </items>
+                  </SplitPane>
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>

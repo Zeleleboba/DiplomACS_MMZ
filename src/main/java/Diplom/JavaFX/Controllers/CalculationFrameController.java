@@ -13,11 +13,14 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +37,14 @@ public class CalculationFrameController {
     @FXML private ComboBox cbProfessions;
     @FXML private AnchorPane upperAnchorPane;
     @FXML private AnchorPane lowerAnchorPane;
+    @FXML private CheckBox chbOverworking;
+    @FXML private CheckBox chbWorkingSaturdays;
+    @FXML private CheckBox chbDepartmentMove;
+    @FXML private CheckBox chbAreaMove;
+    @FXML private CheckBox chbReplace;
+
+
+
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
 
@@ -42,10 +53,7 @@ public class CalculationFrameController {
 
     TableView<ObservableList<String>> tableCalculation = new TableView<ObservableList<String>>();
 
-
     private Executor exec;
-
-
 
     @FXML
     private void initialize () throws SQLException, ClassNotFoundException {
@@ -54,12 +62,10 @@ public class CalculationFrameController {
             t.setDaemon(true);
             return t;
         });
-
         dpOpenDate.setValue(LocalDate.of(2018,01,01));
         dpCloseDate.setValue(LocalDate.of(2018,11,01));
         chartStaffCalc.setLayoutX(0);
         chartStaffCalc.setLayoutY(0);
-
         lowerAnchorPane.getChildren().addAll(chartStaffCalc);
         AnchorPane.setRightAnchor(chartStaffCalc,0.0);
         AnchorPane.setTopAnchor(chartStaffCalc, 0.0);
@@ -68,20 +74,18 @@ public class CalculationFrameController {
         prepareData();
     }
 
-
-
-
     public void prepareData() throws SQLException, ClassNotFoundException {
         cbAreas.setDisable(true);
         cbProfessions.setDisable(true);
-        String selectStmt = "SELECT DISTINCT Department_Name FROM StaffCalculation";
+        String selectStmt = "SELECT DISTINCT Department_Id FROM StaffCalculation order by Department_Id";
         try {
             ResultSet rsEmps = DBUtil.dbExecuteQuery(selectStmt);
             ObservableList<String> depaertmentList = FXCollections.observableArrayList();
             while (rsEmps.next()) {
-                depaertmentList.add(rsEmps.getString("Department_Name"));
+                depaertmentList.add(rsEmps.getString("Department_Id"));
             }
             cbDepartments.setItems(depaertmentList);
+
             cbAreas.setDisable(false);
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("SQL select operation has been failed: " + e);
@@ -90,12 +94,12 @@ public class CalculationFrameController {
         cbDepartments.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String selectArea = "SELECT DISTINCT Area_Name FROM StaffCalculation where Department_Name = '"+cbDepartments.getValue().toString()+"'";
+                String selectArea = "SELECT DISTINCT Area_Id FROM StaffCalculation where Department_Id = "+cbDepartments.getValue().toString()+" order by AREA_ID";
                 try {
                     ResultSet rsEmps = DBUtil.dbExecuteQuery(selectArea);
                     ObservableList<String> areaList = FXCollections.observableArrayList();
                     while (rsEmps.next()) {
-                        areaList.add(rsEmps.getString("Area_Name"));
+                        areaList.add(rsEmps.getString("Area_Id"));
                     }
                     cbAreas.setItems(areaList);
                     cbAreas.setDisable(false);
@@ -115,12 +119,13 @@ public class CalculationFrameController {
         cbAreas.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String selectProfession = "SELECT DISTINCT Profession_Name FROM StaffCalculation where Department_Name = '"+cbDepartments.getValue().toString()+"' and Area_Name = '"+cbAreas.getValue().toString()+"'";
+                String selectProfession = "SELECT DISTINCT Profession_Code FROM StaffCalculation where Department_Id = '"+cbDepartments.getValue().toString()+"' and Area_Id = "+cbAreas.getValue().toString()+" order by Profession_COde";
                 try {
                     ResultSet rsEmps = DBUtil.dbExecuteQuery(selectProfession);
                     ObservableList<String> professionList = FXCollections.observableArrayList();
+                    professionList.add("Все");
                     while (rsEmps.next()) {
-                        professionList.add(rsEmps.getString("Profession_Name"));
+                        professionList.add(rsEmps.getString("Profession_Code"));
                     }
                     cbProfessions.setItems(professionList);
                     cbProfessions.setDisable(false);
@@ -135,31 +140,40 @@ public class CalculationFrameController {
                     }
                 }
 
-
-
-
             }
         });
     }
 
 
     @FXML private void CalculateAction(){
-
-        chartStaffCalc.getData().clear();
-        XYChart.Series series_start_working = new XYChart.Series();
-        XYChart.Series series_working = new XYChart.Series();
-        XYChart.Series series_required = new XYChart.Series();
-
-        series_start_working.setName("Норма-часов начальное");
-        series_working.setName("Норма-часов оптимизированное");
-        series_required.setName("Норма-часов необходимо.");
-        xAxis.setLabel("Даты");
-        chartStaffCalc.setTitle("Анализ численности персонала");
         tableCalculation.getColumns().clear();
-        String StmtExec = "exec ExtractStaff2 0,'"+cbDepartments.getValue().toString()+"','"+cbAreas.getValue().toString()+"','"+cbProfessions.getValue().toString()+"',["+dpOpenDate.getValue()+"],["+dpCloseDate.getValue()+"] \n"+
-                "Select * from PivotTable";
+        int param_overtime = chbOverworking.isSelected() ? 1 : 0;
+        int param_work_sat = chbWorkingSaturdays.isSelected() ? 1 : 0;
+        int param_department_move = chbDepartmentMove.isSelected() ? 1 : 0;
+        int param_area_move = chbAreaMove.isSelected() ? 1 : 0;
+        int param_replace = chbReplace.isSelected() ? 1 : 0;
+        String profession = cbProfessions.getValue().toString();
+        if(profession =="Все") profession = "-1";
+
+        String StmtExec = "exec CalculateWorkers "+cbDepartments.getValue()+", "+cbAreas.getValue()+", "+profession+",'"
+                +dpOpenDate.getValue().toString()+"','"+dpCloseDate.getValue().toString()+"'," +
+                param_overtime +", "+param_work_sat + ", " + param_area_move + ", " + param_department_move + ", " + param_replace;
+
+        tableCalculation.getSelectionModel().selectFirst();
 
         ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+        tableCalculation.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                OnSelectionPivot();
+            }
+        });
+        tableCalculation.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                OnSelectionPivot();
+            }
+        });
 
 
         try {
@@ -235,14 +249,9 @@ public class CalculationFrameController {
 
             while(SelectRS.next()){
                 ObservableList<String> row = FXCollections.observableArrayList();
-                int iter = 1;
+
                 for(int i=1 ; i<=SelectRS.getMetaData().getColumnCount(); i++){
-                    if((i - 3) % 4 ==1){
-                        iter++;
-                        series_start_working.getData().add(new XYChart.Data(SelectRS.getString(i+3), Double.parseDouble(SelectRS.getString(i))));
-                        series_working.getData().add(new XYChart.Data(SelectRS.getString(i+3), Double.parseDouble(SelectRS.getString(i+1))));
-                        series_required.getData().add(new XYChart.Data(SelectRS.getString(i+3), Double.parseDouble(SelectRS.getString(i+2))));
-                    }
+
                     row.add(SelectRS.getString(i));
                 }
 
@@ -256,7 +265,7 @@ public class CalculationFrameController {
             tableCalculation.setPrefWidth(1700);
             tableCalculation.isTableMenuButtonVisible();
 
-            chartStaffCalc.getData().addAll(series_start_working, series_working, series_required);
+
             upperAnchorPane.getChildren().addAll(tableCalculation);
             AnchorPane.setBottomAnchor(tableCalculation,0.0);
             AnchorPane.setTopAnchor(tableCalculation,70.0);
@@ -273,6 +282,30 @@ public class CalculationFrameController {
         }
 
 
+    }
+    @FXML private void OnSelectionPivot(){
+        ObservableList list_row = tableCalculation.getSelectionModel().getSelectedItem();
+
+        chartStaffCalc.getData().clear();
+        XYChart.Series series_start_working = new XYChart.Series();
+        XYChart.Series series_working = new XYChart.Series();
+        XYChart.Series series_required = new XYChart.Series();
+
+
+        for(int i=3 ; i<list_row.size(); i++){
+            if((i - 2) % 4 ==0){
+
+                series_start_working.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-3).toString())));
+                series_working.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-2).toString())));
+                series_required.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-1).toString())));
+
+            }
+
+        }
+        series_start_working.setName("Нормочасов начальное");
+        series_working.setName("Нормочасов оптимизированное");
+        series_required.setName("Нормочасов необходимо.");
+        chartStaffCalc.getData().addAll(series_start_working, series_working, series_required);
     }
 
 }

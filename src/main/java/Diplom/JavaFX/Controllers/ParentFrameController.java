@@ -1,22 +1,27 @@
 package Diplom.JavaFX.Controllers;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+
+import java.util.Stack;
 
 public class ParentFrameController {
     @FXML   private TreeView<String> treeViewACS;
     @FXML   private BorderPane bpParent;
     @FXML   private Label lblStatus;
-
+    @FXML   private ToggleButton tbtnShowTree;
     private TreeItem<String> workers = new TreeItem<String>("Персонал");
     private TreeItem<String> departments = new TreeItem<String>("Цеха");
     private TreeItem<String> planning = new TreeItem<String>("План");
@@ -31,6 +36,7 @@ public class ParentFrameController {
     private  AnchorPane anchor_pane_get;
 
     public void initialize(){
+        tbtnShowTree.setSelected(true);
         try{
             data_form.getChildren().addAll(workers, departments,professions);
             data_form.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/plan.png"), 20, 20, false, true)));
@@ -77,9 +83,22 @@ public class ParentFrameController {
         });
 
 
+
     }
 
+    public void hideTree(){
+        if(tbtnShowTree.isSelected() == true) {
+            treeViewACS.setVisible(true);
+            bpParent.setCenter(anchor_pane_get);
+        }
+        else {
+            treeViewACS.setVisible(false);
+            bpParent.setCenter(anchor_pane_get);
 
+
+
+        }
+    }
 
 
 }
