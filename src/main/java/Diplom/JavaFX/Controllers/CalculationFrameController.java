@@ -42,9 +42,25 @@ public class CalculationFrameController {
     @FXML private CheckBox chbDepartmentMove;
     @FXML private CheckBox chbAreaMove;
     @FXML private CheckBox chbReplace;
-
-
-
+    @FXML private TableView tableAdditionalInformation;
+    @FXML private TableColumn colDepartment;
+    @FXML private TableColumn colArea;
+    @FXML private TableColumn colProfession;
+    @FXML private TableColumn colDate;
+    @FXML private TableColumn colCountWorkers;
+    @FXML private TableColumn colCountWorkersRequired;
+    @FXML private TableColumn colCountWorkersOptim;
+    @FXML private TableColumn colWorkersDiff;
+    @FXML private TableColumn colFondBegin;
+    @FXML private TableColumn colFondOptim;
+    @FXML private TableColumn colFondRequired;
+    @FXML private TableColumn colFondDiff;
+    @FXML private TableColumn colOverworking;
+    @FXML private TableColumn colWorkingSaturdays;
+    @FXML private TableColumn colDepartmentMove;
+    @FXML private TableColumn colAreaMove;
+    @FXML private TableColumn colProfessionMove;
+    @FXML private TableColumn colWorkersToMove;
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
 

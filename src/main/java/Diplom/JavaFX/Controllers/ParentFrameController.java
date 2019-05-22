@@ -89,12 +89,18 @@ public class ParentFrameController {
     public void hideTree(){
         if(tbtnShowTree.isSelected() == true) {
             treeViewACS.setVisible(true);
-            bpParent.setCenter(anchor_pane_get);
+            AnchorPane anc = (AnchorPane) bpParent.getCenter();
+            bpParent.setCenter(null);
+            bpParent.setLeft(treeViewACS);
+            bpParent.setCenter(anc);
         }
         else {
             treeViewACS.setVisible(false);
-            bpParent.setCenter(anchor_pane_get);
+            AnchorPane anc = (AnchorPane) bpParent.getCenter();
 
+            bpParent.setCenter(null);
+            bpParent.setLeft(null);
+            bpParent.setCenter(anc);
 
 
         }
