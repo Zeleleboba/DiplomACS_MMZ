@@ -64,11 +64,11 @@
                                   <TableColumn fx:id="colArea" prefWidth="75.0" text="Участок" />
                                     <TableColumn fx:id="colProfession" prefWidth="75.0" text="Профессия" />
                                     <TableColumn fx:id="colDate" prefWidth="75.0" text="Дата" />
-                                    <TableColumn prefWidth="75.0" text="Работников">
+                                    <TableColumn prefWidth="75.0" text="Количество работников">
                                        <columns>
                                           <TableColumn fx:id="colCountWorkers" prefWidth="75.0" text="Списочное" />
-                                          <TableColumn fx:id="colCountWorkersRequired" prefWidth="75.0" text="Требуемое" />
                                           <TableColumn fx:id="colCountWorkersOptim" prefWidth="75.0" text="Оптимальное" />
+                                          <TableColumn fx:id="colCountWorkersRequired" prefWidth="75.0" text="Требуемое" />
                                           <TableColumn fx:id="colWorkersDiff" prefWidth="75.0" text="Остаток" />
                                        </columns>
                                     </TableColumn>

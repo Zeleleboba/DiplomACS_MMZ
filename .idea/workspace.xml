@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88be96bf-816c-4149-9796-6914fc061df5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/AdditionalInformation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ParentFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ParentFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Frames/CalculationFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Frames/CalculationFrame.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Frames/ParentFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Frames/ParentFrame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/CalculationFrameController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/ParentFrameController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Diplom/JavaFX/Controllers/ParentFrameController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Frames/CalculationFrame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Frames/CalculationFrame.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,41 +76,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="306" column="38" selection-start-line="306" selection-start-column="38" selection-end-line="306" selection-end-column="38" />
+            <state relative-caret-position="2710">
+              <caret line="249" column="21" lean-forward="true" selection-start-line="249" selection-start-column="21" selection-end-line="250" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#initialize#0;class#CalculationFrameController#0" />
-                <element signature="class#3332:4541" />
-                <element signature="class#4576:5897" />
-                <element signature="class#7308:7450" />
-                <element signature="e#7175#7176#0" expanded="true" />
-                <element signature="e#7225#7226#0" expanded="true" />
-                <element signature="e#7380#7381#0" expanded="true" />
-                <element signature="e#7430#7431#0" expanded="true" />
-                <element signature="e#6832#7991#1" />
-                <element signature="e#8035#10730#1" />
-                <element signature="e#12197#12509#0" />
-                <element signature="e#12293#12333#0" />
-                <element signature="e#12358#12411#0" />
+                <element signature="e#3738#4120#0" />
+                <element signature="class#4318:5527" />
+                <element signature="class#5562:6883" />
+                <element signature="method#CalculateAction#0;class#CalculationFrameController#0" />
+                <element signature="class#7984:8145" />
+                <element signature="class#8193:8350" />
+                <element signature="e#8603#10041#1" />
+                <element signature="e#12819#13099#1" />
+                <element signature="e#13597#13909#0" />
+                <element signature="method#OnSelectionPivot#0;class#CalculationFrameController#0" />
+                <element signature="e#17188#17467#1" />
+                <element signature="e#16668#17128#1" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ParentFrameController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="370">
-              <caret line="96" selection-start-line="96" selection-end-line="96" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/52c118f2-d143-46b0-85dd-99f6ed7c0b18/console_3.sql">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -114,6 +114,11 @@
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>OnSelectionPivot</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -158,7 +163,9 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/52c118f2-d143-46b0-85dd-99f6ed7c0b18/console.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/52c118f2-d143-46b0-85dd-99f6ed7c0b18/console_2.sql" />
         <option value="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ParentFrameController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/AdditionalInformation.java" />
         <option value="$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/52c118f2-d143-46b0-85dd-99f6ed7c0b18/console_3.sql" />
       </list>
     </option>
   </component>
@@ -255,16 +262,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Diplom" type="462c0819:PsiDirectoryNode" />
-              <item name="hibernate" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="DiplomACS_MMZ" type="b2602c69:ProjectViewProjectNode" />
-              <item name="DiplomACS_MMZ" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Diplom" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -286,8 +283,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -435,7 +432,9 @@
       <workItem from="1558169293194" duration="145000" />
       <workItem from="1558343330396" duration="298000" />
       <workItem from="1558345495908" duration="19000" />
-      <workItem from="1558541194982" duration="10750000" />
+      <workItem from="1558541194982" duration="16378000" />
+      <workItem from="1558622397144" duration="5257000" />
+      <workItem from="1558640902349" duration="1919000" />
     </task>
     <task id="LOCAL-00001" summary="23.04 Копаюсь с комбобоксами">
       <created>1556040511859</created>
@@ -479,11 +478,25 @@
       <option name="project" value="LOCAL" />
       <updated>1558074142617</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="22.05&#10;&#10;1. Добавил фильтры с числовыми значениями&#10;2. График строится при выборе позиции&#10;3. Процедура производит расчет с учетом параметров напрямую &#10;4. Добавлен учет параметров&#10;5. Начал работу по скрытию структуры">
+      <created>1558556193000</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1558556193000</updated>
+    </task>
+    <task id="LOCAL-00008" summary="22.05&#10;&#10;1. Добавил фильтры с числовыми значениями&#10;2. График строится при выборе позиции&#10;3. Процедура производит расчет с учетом параметров напрямую &#10;4. Добавлен учет параметров&#10;5. Начал работу по скрытию структуры">
+      <created>1558560467117</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1558560467117</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201908000" />
+    <option name="totallyTimeSpent" value="214712000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -498,7 +511,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5918699" weight="0.2675906" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5918699" weight="0.27025586" />
       <window_info id="Structure" order="1" sideWeight="0.45070422" side_tool="true" weight="0.29424307" />
       <window_info id="Designer" order="2" />
       <window_info id="Persistence" order="3" sideWeight="0.40813008" side_tool="true" weight="0.24360341" />
@@ -508,12 +521,12 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32827735" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.34777898" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.7475623" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="bottom" id="Database Console" order="7" weight="0.32827735" />
+      <window_info active="true" anchor="bottom" id="Database Console" order="7" visible="true" weight="0.32827735" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
@@ -580,7 +593,8 @@
     <MESSAGE value="05/05 Перешел на форму с расчетом численности персонала" />
     <MESSAGE value="09/05 Расчет с JPA Hibernate" />
     <MESSAGE value="17.06" />
-    <option name="LAST_COMMIT_MESSAGE" value="17.06" />
+    <MESSAGE value="22.05&#10;&#10;1. Добавил фильтры с числовыми значениями&#10;2. График строится при выборе позиции&#10;3. Процедура производит расчет с учетом параметров напрямую &#10;4. Добавлен учет параметров&#10;5. Начал работу по скрытию структуры" />
+    <option name="LAST_COMMIT_MESSAGE" value="22.05&#10;&#10;1. Добавил фильтры с числовыми значениями&#10;2. График строится при выборе позиции&#10;3. Процедура производит расчет с учетом параметров напрямую &#10;4. Добавлен учет параметров&#10;5. Начал работу по скрытию структуры" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -590,6 +604,12 @@
           <line>125</line>
           <properties />
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java</url>
+          <line>341</line>
+          <properties />
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/DepartmentsFrameController.java</url>
@@ -607,14 +627,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/target/classes/Diplom/hibernate/dao/DepartmentsEntity.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="2408" column="15" selection-start-line="2408" selection-start-column="15" selection-end-line="2408" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/com/sun/javafx/application/LauncherImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -649,12 +661,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Frames/ParentFrame.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="39" lean-forward="true" selection-start-line="4" selection-start-column="39" selection-end-line="4" selection-end-column="39" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="das://52c118f2-d143-46b0-85dd-99f6ed7c0b18/database/ACS_WORK_COPY/schema/dbo/table/Professions.sql">
       <provider selected="true" editor-type-id="text-editor">
@@ -664,8 +676,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Frames/ProfessionsFrame.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/DepartmentsEntity.java" />
     <entry file="uml://Persistence/JavaeeElement:/16bcdea9/hibernate.cfg.xml/Diplom.ACS_MMZ/hibernate/Hibernate/PersistenceModel">
@@ -696,8 +708,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Frames/WorkersFrame.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="das://52c118f2-d143-46b0-85dd-99f6ed7c0b18/database/ACS_WORK_COPY/schema/dbo/table/Professions">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
@@ -801,20 +813,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Frames/DepartmentsFrame.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="36" lean-forward="true" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="36" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/Frames/CalculationFrame.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-34">
           <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="uml://DATABASE/52c118f2-d143-46b0-85dd-99f6ed7c0b18.SCHEMA:ACS_WORK_COPY.dbo">
       <provider selected="true" editor-type-id="UmlEditorProvider">
@@ -862,13 +874,6 @@
             <element signature="e#1029#1030#0" expanded="true" />
             <element signature="e#1066#1067#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/WorkersEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -970,16 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ProfessionsFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/DepartmentsFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -995,16 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/WorkersFrameController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="99" column="53" selection-start-line="99" selection-start-column="53" selection-end-line="99" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1032,10 +1017,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/AdditionalInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ProfessionsFrameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" column="55" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/ParentFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="96" selection-start-line="96" selection-end-line="96" />
+        <state relative-caret-position="1003">
+          <caret line="75" column="41" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/hibernate/dao/WorkersEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/WorkersFrameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="99" column="53" selection-start-line="99" selection-start-column="53" selection-end-line="99" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1044,26 +1063,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Diplom/JavaFX/Controllers/CalculationFrameController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="306" column="38" selection-start-line="306" selection-start-column="38" selection-end-line="306" selection-end-column="38" />
+        <state relative-caret-position="2710">
+          <caret line="249" column="21" lean-forward="true" selection-start-line="249" selection-start-column="21" selection-end-line="250" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#initialize#0;class#CalculationFrameController#0" />
-            <element signature="class#3332:4541" />
-            <element signature="class#4576:5897" />
-            <element signature="class#7308:7450" />
-            <element signature="e#7175#7176#0" expanded="true" />
-            <element signature="e#7225#7226#0" expanded="true" />
-            <element signature="e#7380#7381#0" expanded="true" />
-            <element signature="e#7430#7431#0" expanded="true" />
-            <element signature="e#6832#7991#1" />
-            <element signature="e#8035#10730#1" />
-            <element signature="e#12197#12509#0" />
-            <element signature="e#12293#12333#0" />
-            <element signature="e#12358#12411#0" />
+            <element signature="e#3738#4120#0" />
+            <element signature="class#4318:5527" />
+            <element signature="class#5562:6883" />
+            <element signature="method#CalculateAction#0;class#CalculationFrameController#0" />
+            <element signature="class#7984:8145" />
+            <element signature="class#8193:8350" />
+            <element signature="e#8603#10041#1" />
+            <element signature="e#12819#13099#1" />
+            <element signature="e#13597#13909#0" />
+            <element signature="method#OnSelectionPivot#0;class#CalculationFrameController#0" />
+            <element signature="e#17188#17467#1" />
+            <element signature="e#16668#17128#1" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/52c118f2-d143-46b0-85dd-99f6ed7c0b18/console_3.sql">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
