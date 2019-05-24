@@ -8,10 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -64,7 +61,7 @@ public class CalculationFrameController {
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
 
-    private LineChart chartStaffCalc = new LineChart(xAxis, yAxis);
+    private AreaChart chartStaffCalc = new AreaChart(xAxis, yAxis);
     String openDate, closeDate;
 
     TableView<ObservableList<String>> tableCalculation = new TableView<ObservableList<String>>();
@@ -394,9 +391,9 @@ public class CalculationFrameController {
             for(int i=0; i<count_iter; i++){
                 String column_name_date = SelectRS.getMetaData().getColumnName(4*i + 4+6);
                 TableColumn column_date = new TableColumn(column_name_date);
-                String column_start = "Start";//SelectRS.getMetaData().getColumnName(4*i + 1+3);
-                String column_work = "Opt";//SelectRS.getMetaData().getColumnName(4*i + 2+3);
-                String column_demand = "Req";//SelectRS.getMetaData().getColumnName(4*i + 3+3);
+                String column_start = "Н/ч факт";
+                String column_work = "Н/ч расч.";
+                String column_demand = "Н/ч треб.";
                 TableColumn column_start_working_time = new TableColumn(column_start);
                 int finalI = i;
                 column_start_working_time.setCellValueFactory(new Callback<TableColumn.CellDataFeatures, ObservableValue>() {
@@ -441,7 +438,7 @@ public class CalculationFrameController {
             tableCalculation.setItems(data);
             tableCalculation.setLayoutX(0);
             tableCalculation.setEditable(true);
-            tableCalculation.setPrefWidth(2000);
+            tableCalculation.setPrefWidth(1900);
             tableCalculation.isTableMenuButtonVisible();
             upperAnchorPane.getChildren().addAll(tableCalculation);
             AnchorPane.setBottomAnchor(tableCalculation,0.0);
@@ -473,9 +470,22 @@ public class CalculationFrameController {
         profession = list_row.get(2).toString();
         open_date = dpOpenDate.getValue().toString();
         close_date = dpCloseDate.getValue().toString();
-        String query = "select b.department_parent_name, b.Department_Name, c.Profession_Name, a.CalculationDate, a.Count_Workers, a.Count_Workers_Calculated, round(a.Required_Time/(a.FifthDays*8),0) as WorkersRequired, \n" +
+        String query = "select b.department_parent_name, b.Department_Name, c.Profession_Name, case \n" +
+                "\twhen month(a.CalculationDate) =  1 then concat('Январь ',year(a.CalculationDate))\n" +
+                "\twhen month(a.CalculationDate) =  2 then concat('Февраль ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  3 then concat('Март ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  4 then concat('Апрель ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  5 then concat('Май ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  6 then concat('Июнь ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  7 then concat('Июль ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  8 then concat('Август ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  9 then concat('Сентябрь ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  10 then concat('Октябрь ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  11 then concat('Ноябрь ',year(a.CalculationDate)) \n" +
+                "\twhen month(a.CalculationDate) =  12 then concat('Декабрь ',year(a.CalculationDate)) \n" +
+                "\tend as CalculationDate, a.Count_Workers, a.Count_Workers_Calculated, round(a.Required_Time/(a.FifthDays*8),0) as WorkersRequired, \n" +
                 "round((a.Required_Time - a.WorkingTime)/(a.FifthDays*8), 0) as StaffNeed,\n" +
-                "a.StartWorkingTime, a.WorkingTime, a.Required_Time, round(a.WorkingTime - a.Required_Time, 0) as FondDiff,\n" +
+                "a.StartWorkingTime, a.WorkingTime, round(a.Required_Time,1) as Required_Time, round(a.WorkingTime - a.Required_Time, 1) as FondDiff,\n" +
                 "a.OverWorkingPerMonth, (a.WorkingDays -a.FifthDays)*a.Count_Workers * 8 as WorkingSaturdays, p.department_parent_name, p.Department_Name, p.Profession_Name, p.Count_Workers\n" +
                 "from CalculationInformation a\n" +
                 "join Departments_Sections b on a.area_id = b.Department_Id\n" +
@@ -505,6 +515,7 @@ public class CalculationFrameController {
             moreInfo.add(row);
         }
         tableAdditionalInformation.setItems(moreInfo);
+
         for(int i=6 ; i<list_row.size(); i++){
             if((i - 5) % 4 ==0){
 
@@ -515,6 +526,7 @@ public class CalculationFrameController {
 
         }
         series_start_working.setName("Нормочасов начальное");
+
         series_working.setName("Нормочасов оптимизированное");
         series_required.setName("Нормочасов необходимо.");
         chartStaffCalc.getData().addAll(series_start_working, series_working, series_required);
