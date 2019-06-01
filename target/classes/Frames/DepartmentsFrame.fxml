@@ -19,7 +19,7 @@
                <children>
                   <TreeTableView fx:id="ttvDepartments" editable="true" layoutX="12.0" layoutY="121.0" onMouseClicked="#getSelectedDepartment" onMouseEntered="#getSelectedDepartment" onMousePressed="#getSelectedDepartment" prefHeight="470.0" prefWidth="423.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TreeTableColumn fx:id="colDepCode" minWidth="5.0" prefWidth="5.0" text="Шифр отделения" />
+                      <TreeTableColumn fx:id="colDepCode" minWidth="5.0" prefWidth="5.0" text="Шифр отделения" visible="false" />
                       <TreeTableColumn fx:id="colDepName" prefWidth="313.0" text="Наименование отделения" />
                     </columns>
                      <columnResizePolicy>

@@ -34,15 +34,15 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <DatePicker fx:id="dpOpenDate" prefHeight="25.0" prefWidth="175.0" promptText="Откр. дата" showWeekNumbers="true" GridPane.columnIndex="3" />
-                        <DatePicker fx:id="dpCloseDate" prefHeight="25.0" prefWidth="177.0" promptText="Закр. дата" showWeekNumbers="true" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <DatePicker fx:id="dpOpenDate" prefHeight="25.0" prefWidth="175.0" promptText="Начало интервала" showWeekNumbers="true" GridPane.columnIndex="3" />
+                        <DatePicker fx:id="dpCloseDate" prefHeight="25.0" prefWidth="177.0" promptText="Конец интервала" showWeekNumbers="true" GridPane.columnIndex="3" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                         <CheckBox fx:id="chbDepartmentMove" mnemonicParsing="false" text="Замещения профессий" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chbAreaMove" mnemonicParsing="false" text="Перемещения по участкам" GridPane.columnIndex="5" />
+                        <CheckBox fx:id="chbAreaMove" mnemonicParsing="false" text="Перемещения по участкам" GridPane.columnIndex="5" GridPane.hgrow="ALWAYS" />
                         <CheckBox fx:id="chbOverworking" mnemonicParsing="false" text="Сверхурочные работы" GridPane.columnIndex="4" />
-                        <CheckBox fx:id="chbWorkingSaturdays" mnemonicParsing="false" text="Работы по субботам" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chbReplace" mnemonicParsing="false" text="Перемещения по цехам" GridPane.columnIndex="6" />
+                        <CheckBox fx:id="chbWorkingSaturdays" mnemonicParsing="false" text="Работы по субботам" GridPane.columnIndex="4" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chbReplace" mnemonicParsing="false" text="Перемещения по цехам" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS" />
                         <ComboBox fx:id="cbAreas" prefHeight="25.0" prefWidth="220.0" promptText="Участок" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="cbProfessions" prefHeight="25.0" prefWidth="274.0" promptText="Профессия" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="cbProfessions" prefHeight="25.0" prefWidth="274.0" promptText="Профессия" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS" />
                         <ComboBox fx:id="cbDepartments" prefHeight="25.0" prefWidth="293.0" promptText="Цех" GridPane.rowIndex="1" />
                         <Button fx:id="btnCalculate" maxHeight="25.0" minHeight="25.0" mnemonicParsing="false" onAction="#CalculateAction" prefHeight="25.0" prefWidth="135.0" text="Рассчитать" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.rowIndex="1" />
                         <Label text="Номер цеха:" />

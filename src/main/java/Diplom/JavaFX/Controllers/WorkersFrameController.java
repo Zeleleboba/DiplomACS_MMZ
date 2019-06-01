@@ -28,39 +28,22 @@ import java.util.concurrent.Executors;
 
 public class WorkersFrameController {
 
-    @FXML
-    private TableView<WorkersEntity> tableWorkers;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkSurname;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkName;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkPatronymic;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkProf;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkDep;
-    @FXML
-    private TableColumn<WorkersEntity, String> colWorkArea;
-    @FXML
-    private TableColumn<WorkersEntity, Double> colWorkTime;
-    @FXML
-    private TextField fieldWorkSurname;
-    @FXML
-    private TextField fieldWorkName;
-    @FXML
-    private TextField fieldWorkPatronymic;
-    @FXML
-    private TextField fieldWorkProf;
-    @FXML
-    private ComboBox cbWorkDep;
-
-    @FXML
-    private ComboBox cbWorkArea;
-    @FXML
-    private TextField fieldWorkTime;
-    @FXML
-    private ComboBox cbWorkProf;
+    @FXML    private TableView<WorkersEntity> tableWorkers;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkSurname;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkName;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkPatronymic;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkProf;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkDep;
+    @FXML    private TableColumn<WorkersEntity, String> colWorkArea;
+    @FXML    private TableColumn<WorkersEntity, Double> colWorkTime;
+    @FXML    private TextField fieldWorkSurname;
+    @FXML    private TextField fieldWorkName;
+    @FXML    private TextField fieldWorkPatronymic;
+    @FXML    private TextField fieldWorkProf;
+    @FXML    private ComboBox cbWorkDep;
+    @FXML    private ComboBox cbWorkArea;
+    @FXML    private TextField fieldWorkTime;
+    @FXML    private ComboBox cbWorkProf;
 
 
     private Executor exec;
@@ -83,6 +66,7 @@ public class WorkersFrameController {
         colWorkDep.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDepartment().getDepartmentParentName()));
 
         loadOnForm();
+
     }
 
     private void loadOnForm() throws SQLException, ClassNotFoundException {
@@ -130,7 +114,7 @@ public class WorkersFrameController {
     @FXML
     public void getSelectedWorker() {
         WorkersEntity workersEntity;
-        if (tableWorkers.getSelectionModel().getSelectedItem() != null) {
+
             workersEntity = tableWorkers.getSelectionModel().getSelectedItem();
 
             fieldWorkSurname.setText(workersEntity.getWorkerSurname());
@@ -152,7 +136,7 @@ public class WorkersFrameController {
             }
             else{
                 cbWorkArea.setValue(null);
-            }
+
         }
     }
 

@@ -22,7 +22,7 @@ public class AppMain extends Application {
             loader.setLocation(AppMain.class.getResource("/Frames/ParentFrame.fxml"));
             rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
-            primaryStage.getIcons().add(new Image("/images/gary_snail.png"));
+            primaryStage.getIcons().add(new Image("/images/snail.png"));
             primaryStage.setScene(scene);
             primaryStage.show();
         }

@@ -30,23 +30,26 @@ public class ParentFrameController {
     private TreeItem<String> professions = new TreeItem<String>("Профессии");
     private TreeItem<String> analyze = new TreeItem<String>("Анализ");
     private TreeItem<String> data_form = new TreeItem<String>("Данные");
+    private TreeItem<String> calendar = new TreeItem<String>("Производственный календарь");
 
     TreeItem<String> manage = new TreeItem<String>("Управление");
     TreeItem<String> ACS_MMZ = new TreeItem<String>("Система управления персоналом");
     private  AnchorPane anchor_pane_get;
 
+    double iconWidth = 20;
+    double iconHeight = 20;
     public void initialize(){
         tbtnShowTree.setSelected(true);
         try{
             data_form.getChildren().addAll(workers, departments,professions);
-            data_form.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/plan.png"), 20, 20, false, true)));
-            workers.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/personal.png"), 20, 20, false, true)));
-            professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pepega.png"), 20, 20, false, true)));
-            professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/pepega.png"), 20, 20, false, true)));
-            analyze.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/calc.png"), 20, 20, false, true)));
+            data_form.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/plan.png"), iconWidth, iconHeight, false, true)));
+            workers.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/worker_id.png"), iconWidth, iconHeight, false, true)));
+            departments.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/department.png"),iconWidth,iconHeight, false, true)));
+            professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/profession.png"), iconWidth, iconHeight, false, true)));
+            analyze.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/calculate.png"), iconWidth, iconHeight, false, true)));
 
             ACS_MMZ.getChildren().addAll(data_form, analyze);
-            ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.gif"), 24, 24, false, true)));
+            ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.gif"), iconWidth, iconHeight, false, true)));
 
             treeViewACS.setRoot(ACS_MMZ);
             treeViewACS.setShowRoot(true);
@@ -54,6 +57,7 @@ public class ParentFrameController {
         catch (Exception e){
             e.printStackTrace();
         }
+
         treeViewACS.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
 
             try {

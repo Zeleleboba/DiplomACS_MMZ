@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.TreeView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="1124.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.ParentFrameController">
    <center>
@@ -21,8 +23,26 @@
    <left>
       <AnchorPane maxWidth="-Infinity" minHeight="20.0" prefHeight="603.0" prefWidth="25.0" BorderPane.alignment="CENTER">
          <children>
-            <ToggleButton fx:id="tbtnShowTree" layoutX="-30.0" layoutY="31.0" mnemonicParsing="false" onAction="#hideTree" prefHeight="25.0" prefWidth="86.0" rotate="270.0" style="-fx-background-color: #B0E0E6;" text="Структура" AnchorPane.leftAnchor="-30.0" AnchorPane.rightAnchor="-31.0" AnchorPane.topAnchor="31.0" />
+            <ToggleButton fx:id="tbtnShowTree" layoutX="-47.0" layoutY="47.0" mnemonicParsing="false" onAction="#hideTree" prefHeight="26.0" prefWidth="119.0" rotate="270.0" style="-fx-background-color: #B0E0E6;" text="Структура" AnchorPane.leftAnchor="-47.0" AnchorPane.rightAnchor="-45.99999999999999" AnchorPane.topAnchor="47.0" />
          </children>
       </AnchorPane>
    </left>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Файл">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Экспорт..." />
+              <MenuItem mnemonicParsing="false" text="Печать" />
+                  <MenuItem mnemonicParsing="false" text="Закрыть" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Помощь">
+            <items>
+              <MenuItem mnemonicParsing="false" text="О программе" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
 </BorderPane>

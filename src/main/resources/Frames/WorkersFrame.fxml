@@ -21,7 +21,7 @@
                <children>
                   <BorderPane prefHeight="546.0" prefWidth="595.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <center>
-                        <TableView fx:id="tableWorkers" editable="true" fixedCellSize="0.0" prefHeight="503.0" prefWidth="466.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                        <TableView fx:id="tableWorkers" editable="true" fixedCellSize="0.0" onMouseClicked="#getSelectedWorker" prefHeight="503.0" prefWidth="466.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                           <columns>
                             <TableColumn id="workersSurnameColumn" fx:id="colWorkSurname" prefWidth="75.0" text="Фамилия" />
                             <TableColumn id="workersFirstNameColumn" fx:id="colWorkName" prefWidth="75.0" text="Имя" />
