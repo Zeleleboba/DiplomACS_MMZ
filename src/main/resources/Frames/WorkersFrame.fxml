@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.WorkersFrameController">
@@ -23,8 +24,8 @@
                      <center>
                         <TableView fx:id="tableWorkers" editable="true" fixedCellSize="0.0" onMouseClicked="#getSelectedWorker" prefHeight="503.0" prefWidth="466.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                           <columns>
-                            <TableColumn id="workersSurnameColumn" fx:id="colWorkSurname" prefWidth="75.0" text="Фамилия" />
-                            <TableColumn id="workersFirstNameColumn" fx:id="colWorkName" prefWidth="75.0" text="Имя" />
+                            <TableColumn id="workersSurnameColumn" fx:id="colWorkSurname" minWidth="-Infinity" prefWidth="64.0" text="Фамилия" />
+                            <TableColumn id="workersFirstNameColumn" fx:id="colWorkName" prefWidth="100.0" text="Имя" />
                               <TableColumn id="workersPatronymicColumns" fx:id="colWorkPatronymic" prefWidth="86.0" text="Отчество" />
                               <TableColumn id="workersProfIdColumns" fx:id="colWorkProf" prefWidth="92.0" text="Профессия" />
                               <TableColumn id="workersLocationColumn" text="Место работы">
@@ -32,13 +33,40 @@
                                     <TableColumn fx:id="colWorkDep" text="Цех" />
                                     <TableColumn fx:id="colWorkArea" prefWidth="89.0" text="Отделение" />
                                  </columns></TableColumn>
-                              <TableColumn id="workersDayWorkColumns" fx:id="colWorkTime" prefWidth="89.0" text="Выработка" />
+                              <TableColumn id="workersDayWorkColumns" fx:id="colWorkTime" prefWidth="89.0" text="Выработка" visible="false" />
                           </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
                      </center>
+                     <top>
+                        <GridPane prefHeight="25.0" prefWidth="574.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField fx:id="filterSurname" onKeyPressed="#filterWorkers" promptText="Фамилия" />
+                              <TextField fx:id="filterName" onKeyPressed="#filterWorkers" promptText="Имя" GridPane.columnIndex="1" />
+                              <TextField fx:id="filterPatronymic" onKeyPressed="#filterWorkers" promptText="Отчество" GridPane.columnIndex="2" />
+                              <TextField fx:id="filterProfession" onKeyPressed="#filterWorkers" promptText="Профессия" GridPane.columnIndex="3" />
+                              <HBox nodeOrientation="LEFT_TO_RIGHT" prefHeight="27.0" prefWidth="574.0" GridPane.columnIndex="5">
+                                 <children>
+                                    <TextField fx:id="filterArea" onKeyPressed="#filterWorkers" promptText="Участок" />
+                                 </children>
+                              </HBox>
+                              <TextField fx:id="filterDepartment" onKeyPressed="#filterWorkers" promptText="Цех" GridPane.columnIndex="4" />
+                           </children>
+                        </GridPane>
+                     </top>
                   </BorderPane>
                </children>
             </AnchorPane>

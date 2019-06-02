@@ -15,33 +15,34 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 
+import java.io.IOException;
 import java.util.Stack;
 
 public class ParentFrameController {
     @FXML   private TreeView<String> treeViewACS;
     @FXML   private BorderPane bpParent;
-    @FXML   private Label lblStatus;
+
     @FXML   private ToggleButton tbtnShowTree;
     private TreeItem<String> workers = new TreeItem<String>("Персонал");
     private TreeItem<String> departments = new TreeItem<String>("Цеха");
-    private TreeItem<String> planning = new TreeItem<String>("План");
+
     private TreeItem<String> details = new TreeItem<String>("Номенклатура деталей");
-    private TreeItem<String> plots = new TreeItem<String>("Графики");
+
     private TreeItem<String> professions = new TreeItem<String>("Профессии");
     private TreeItem<String> analyze = new TreeItem<String>("Анализ");
     private TreeItem<String> data_form = new TreeItem<String>("Данные");
     private TreeItem<String> calendar = new TreeItem<String>("Производственный календарь");
 
-    TreeItem<String> manage = new TreeItem<String>("Управление");
+    TreeItem<String> demand = new TreeItem<String>("Потребность в нормо-часах");
     TreeItem<String> ACS_MMZ = new TreeItem<String>("Система управления персоналом");
     private  AnchorPane anchor_pane_get;
 
     double iconWidth = 20;
     double iconHeight = 20;
-    public void initialize(){
+    public void initialize() throws IOException {
         tbtnShowTree.setSelected(true);
         try{
-            data_form.getChildren().addAll(workers, departments,professions);
+            data_form.getChildren().addAll(workers, departments, professions, demand);
             data_form.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/plan.png"), iconWidth, iconHeight, false, true)));
             workers.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/worker_id.png"), iconWidth, iconHeight, false, true)));
             departments.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/department.png"),iconWidth,iconHeight, false, true)));
@@ -49,7 +50,7 @@ public class ParentFrameController {
             analyze.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/calculate.png"), iconWidth, iconHeight, false, true)));
 
             ACS_MMZ.getChildren().addAll(data_form, analyze);
-            ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.gif"), iconWidth, iconHeight, false, true)));
+            ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.png"), iconWidth, iconHeight, false, true)));
 
             treeViewACS.setRoot(ACS_MMZ);
             treeViewACS.setShowRoot(true);
@@ -58,8 +59,12 @@ public class ParentFrameController {
             e.printStackTrace();
         }
 
-        treeViewACS.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        FXMLLoader loader_main = new FXMLLoader();
+        loader_main.setLocation(ParentFrameController.class.getResource("/Frames/MainFrame.fxml"));
 
+
+        bpParent.setCenter(loader_main.load());
+        treeViewACS.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 FXMLLoader loader = new FXMLLoader();
                 if (newValue == professions) {
@@ -76,6 +81,12 @@ public class ParentFrameController {
                 }
                 else if(newValue == analyze) {
                     loader.setLocation(ParentFrameController.class.getResource("/Frames/CalculationFrame.fxml"));
+                }
+                else if(newValue == demand) {
+                    loader.setLocation(ParentFrameController.class.getResource("/Frames/DemandFrame.fxml"));
+                }
+                else if(newValue == ACS_MMZ) {
+                    loader.setLocation(ParentFrameController.class.getResource("/Frames/MainFrame.fxml"));
                 }
                 anchor_pane_get = loader.load();
                 bpParent.setCenter(anchor_pane_get);

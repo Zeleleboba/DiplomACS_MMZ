@@ -10,16 +10,25 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -61,6 +70,17 @@ public class CalculationFrameController {
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
 
+
+
+    ContextMenu contextMenu = new ContextMenu();
+
+    MenuItem itemPDF = new MenuItem("PDF");
+    MenuItem itemXLS = new MenuItem("XLSX");
+    Menu menuExport = new Menu("Экспорт данных в формат");
+    Image pdfIcon = new Image(getClass().getResourceAsStream("/images/pdf.ico"),20,20,false, true);
+    Image xlsxIcon = new Image(getClass().getResourceAsStream("/images/xlsx.ico"));
+
+
     private AreaChart chartStaffCalc = new AreaChart(xAxis, yAxis);
     String openDate, closeDate;
 
@@ -85,6 +105,7 @@ public class CalculationFrameController {
         AnchorPane.setLeftAnchor(chartStaffCalc,0.0);
         AnchorPane.setBottomAnchor(chartStaffCalc, 0.0);
         prepareData();
+        loadContextMenu();
     }
 
     public void prepareData() throws SQLException, ClassNotFoundException {
@@ -531,5 +552,56 @@ public class CalculationFrameController {
         series_required.setName("Нормочасов необходимо.");
         chartStaffCalc.getData().addAll(series_start_working, series_working, series_required);
     }
+    private void loadContextMenu(){
 
+        itemXLS.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+
+                try {
+                    Workbook book = new HSSFWorkbook();
+                    Sheet sheet = book.createSheet("Дополнительная информация");
+                    Row row = sheet.createRow(0);
+
+
+                    Cell name = row.createCell(0);
+                    name.setCellValue("John");
+
+                    Cell birthdate = row.createCell(1);
+                    DataFormat format = book.createDataFormat();
+
+
+                    CellStyle dateStyle = book.createCellStyle();
+                    dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy"));
+                    birthdate.setCellStyle(dateStyle);
+
+
+
+                    birthdate.setCellValue(new Date(110, 10, 10));
+                    sheet.autoSizeColumn(1);
+
+
+
+                    book.write(new FileOutputStream("C:/Users/bukho/Desktop/export.xls"));
+                    book.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        menuExport.getItems().addAll(itemPDF, itemXLS);
+        contextMenu.getItems().addAll(menuExport);
+
+
+
+
+        tableAdditionalInformation.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
+            @Override
+            public void handle(ContextMenuEvent event) {
+                contextMenu.show(tableAdditionalInformation, event.getScreenX(), event.getScreenY());
+            }
+        });
+    }
 }

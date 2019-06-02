@@ -44,8 +44,12 @@ public class WorkersFrameController {
     @FXML    private ComboBox cbWorkArea;
     @FXML    private TextField fieldWorkTime;
     @FXML    private ComboBox cbWorkProf;
-
-
+    @FXML    private TextField filterSurname;
+    @FXML    private TextField filterName;
+    @FXML    private TextField filterPatronymic;
+    @FXML    private TextField filterProfession;
+    @FXML    private TextField filterDepartment;
+    @FXML    private TextField filterArea;
     private Executor exec;
     @FXML
     private void initialize () throws SQLException, ClassNotFoundException {
@@ -71,9 +75,6 @@ public class WorkersFrameController {
 
     private void loadOnForm() throws SQLException, ClassNotFoundException {
         fillWorkersTable();
-
-
-
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         ObservableList<ProfessionsEntity> profData = FXCollections.observableList(session.createQuery("FROM ProfessionsEntity").list());
         ObservableList<DepartmentsSectionsEntity> departmentsData = FXCollections.observableList(session.createQuery("FROM DepartmentsSectionsEntity where Department_Parent_Id = 0").list());
@@ -82,7 +83,6 @@ public class WorkersFrameController {
         query.setParameter("parent_id", parentId);
         ObservableList<DepartmentsSectionsEntity> areasData = FXCollections.observableList(query.list());
         cbWorkProf.getSelectionModel().selectFirst();
-
 
         ObservableMap<Integer, String> depMap = FXCollections.observableHashMap();
         ObservableList depList = FXCollections.observableArrayList();
@@ -108,7 +108,6 @@ public class WorkersFrameController {
 
 
         getSelectedWorker();
-
     }
 
     @FXML
@@ -136,9 +135,9 @@ public class WorkersFrameController {
             }
             else{
                 cbWorkArea.setValue(null);
-
-        }
+             }
     }
+
 
     private void fillWorkersTable()throws SQLException, ClassNotFoundException {
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
@@ -149,6 +148,27 @@ public class WorkersFrameController {
 
 
         session.close();
+
+    }
+    @FXML
+    public void filterWorkers(){
+        String surname = filterSurname.getText();
+        String name = filterName.getText();
+        String patronymic = filterPatronymic.getText();
+        String profession = filterProfession.getText();
+        String department = filterDepartment.getText();
+        String area = filterArea.getText();
+
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Query query = session.createQuery("FROM WorkersEntity where Worker_Surname like :surname and Worker_Name like :name and Worker_patronymic like :patronymic");
+        query.setParameter("surname", "%"+surname+"%");
+        query.setParameter("name", "%"+name+"%");
+        query.setParameter("patronymic", "%"+patronymic+"%");
+
+
+        List<WorkersEntity> workers = query.list();
+        tableWorkers.setItems(FXCollections.observableList(workers));
+        tableWorkers.getSelectionModel().selectFirst();
 
     }
 
