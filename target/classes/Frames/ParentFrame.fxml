@@ -23,23 +23,21 @@
    <left>
       <AnchorPane maxWidth="-Infinity" minHeight="20.0" prefHeight="603.0" prefWidth="25.0" BorderPane.alignment="CENTER">
          <children>
-            <ToggleButton fx:id="tbtnShowTree" layoutX="-47.0" layoutY="47.0" mnemonicParsing="false" onAction="#hideTree" prefHeight="26.0" prefWidth="119.0" rotate="270.0" style="-fx-background-color: #B0E0E6;" text="Структура" AnchorPane.leftAnchor="-47.0" AnchorPane.rightAnchor="-45.99999999999999" AnchorPane.topAnchor="47.0" />
+            <ToggleButton fx:id="tbtnShowTree" layoutX="-54.0" layoutY="46.0" mnemonicParsing="false" onAction="#hideTree" prefHeight="26.0" prefWidth="133.0" rotate="270.0" text="Структура" AnchorPane.leftAnchor="-54.0" AnchorPane.rightAnchor="-54.0" AnchorPane.topAnchor="46.0" />
          </children>
       </AnchorPane>
    </left>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="Файл">
+          <Menu mnemonicParsing="false" text="АСУ ММЗ">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Экспорт..." />
-              <MenuItem mnemonicParsing="false" text="Печать" />
-                  <MenuItem mnemonicParsing="false" text="Закрыть" />
+                  <MenuItem fx:id="miExit" mnemonicParsing="false" text="Выйти" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Помощь">
             <items>
-              <MenuItem mnemonicParsing="false" text="О программе" />
+              <MenuItem fx:id="miAbout" mnemonicParsing="false" text="О программе" />
             </items>
           </Menu>
         </menus>

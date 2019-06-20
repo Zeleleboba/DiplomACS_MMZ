@@ -68,9 +68,7 @@ public class WorkersFrameController {
         colWorkProf.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getProfession().getProfessionName()));
         colWorkArea.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDepartment().getDepartmentName()));
         colWorkDep.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDepartment().getDepartmentParentName()));
-
         loadOnForm();
-
     }
 
     private void loadOnForm() throws SQLException, ClassNotFoundException {
@@ -100,43 +98,36 @@ public class WorkersFrameController {
         for(ProfessionsEntity item3 : profData){
             profList.add(item3.getProfessionName());
         }
-
-
         cbWorkProf.setItems(profList);
         cbWorkDep.setItems(depList);
         cbWorkArea.setItems(areaList);
-
-
         getSelectedWorker();
     }
 
     @FXML
     public void getSelectedWorker() {
-        WorkersEntity workersEntity;
+        WorkersEntity workersEntity = tableWorkers.getSelectionModel().getSelectedItem();
 
-            workersEntity = tableWorkers.getSelectionModel().getSelectedItem();
+        fieldWorkSurname.setText(workersEntity.getWorkerSurname());
+        fieldWorkName.setText(workersEntity.getWorkerName());
+        fieldWorkPatronymic.setText(workersEntity.getWorkerPatronymic());
+        fieldWorkTime.setText(workersEntity.getWorkerCountHours()+"");
+        cbWorkProf.setValue(workersEntity.getProfession().getProfessionName());
 
-            fieldWorkSurname.setText(workersEntity.getWorkerSurname());
-            fieldWorkName.setText(workersEntity.getWorkerName());
-            fieldWorkPatronymic.setText(workersEntity.getWorkerPatronymic());
-            fieldWorkTime.setText(workersEntity.getWorkerCountHours()+"");
-            cbWorkProf.setValue(workersEntity.getProfession().getProfessionName());
+        if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment() != null){
+            cbWorkDep.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentParentName());
 
-            if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment() != null){
-                cbWorkDep.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentParentName());
-
-            }
-            else{
-                cbWorkDep.setValue(null);
-            }
-            if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName() != null){
-                cbWorkArea.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName());
-
-            }
-            else{
-                cbWorkArea.setValue(null);
-             }
-    }
+        }
+        else{
+            cbWorkDep.setValue(null);
+        }
+        if(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName() != null){
+            cbWorkArea.setValue(tableWorkers.getSelectionModel().getSelectedItem().getDepartment().getDepartmentName());
+        }
+        else{
+            cbWorkArea.setValue(null);
+        }
+}
 
 
     private void fillWorkersTable()throws SQLException, ClassNotFoundException {
@@ -145,20 +136,15 @@ public class WorkersFrameController {
         List<WorkersEntity> workers = query.list();
         tableWorkers.setItems(FXCollections.observableList(workers));
         tableWorkers.getSelectionModel().selectFirst();
-
-
         session.close();
-
     }
-    @FXML
-    public void filterWorkers(){
+    @FXML    public void filterWorkers(){
         String surname = filterSurname.getText();
         String name = filterName.getText();
         String patronymic = filterPatronymic.getText();
         String profession = filterProfession.getText();
         String department = filterDepartment.getText();
         String area = filterArea.getText();
-
         Session session = HibernateSessionFactory.getSessionFactory().openSession();
         Query query = session.createQuery("FROM WorkersEntity where Worker_Surname like :surname and Worker_Name like :name and Worker_patronymic like :patronymic");
         query.setParameter("surname", "%"+surname+"%");
@@ -169,7 +155,6 @@ public class WorkersFrameController {
         List<WorkersEntity> workers = query.list();
         tableWorkers.setItems(FXCollections.observableList(workers));
         tableWorkers.getSelectionModel().selectFirst();
-
     }
 
 }

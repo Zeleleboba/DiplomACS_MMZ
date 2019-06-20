@@ -1,7 +1,9 @@
 package Diplom.JavaFX.Controllers;
 
 import Diplom.hibernate.dao.ProfessionsEntity;
+import Diplom.hibernate.dao.ReplaceableProfessionsEntity;
 import Diplom.hibernate.util.HibernateSessionFactory;
+import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -21,22 +23,23 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class ProfessionsFrameController {
-    @FXML
-    private TableView<ProfessionsEntity> tableProfessions;
-    @FXML
-    private TableColumn<ProfessionsEntity, Integer> colProfCode;
-    @FXML
-    private TableColumn<ProfessionsEntity, String> colProfName;
-    @FXML
-    private TextField fieldProfCode;
-    @FXML
-    private TextField fieldProfName;
-    @FXML
-    private Button btnAddProf;
-    @FXML
-    private Button btnDeleteProf;
-    @FXML
-    private Button btnSaveProf;
+    @FXML   private TableView<ProfessionsEntity> tableProfessions;
+    @FXML   private TableView<ReplaceableProfessionsEntity> tableReplaceProfessions;
+    @FXML   private TableColumn<ProfessionsEntity, Integer> colProfCode;
+    @FXML   private TableColumn<ProfessionsEntity, String> colProfName;
+    @FXML   private TableColumn<ReplaceableProfessionsEntity, String> colDepartment;
+    @FXML   private TableColumn<ReplaceableProfessionsEntity, String> colNewProfession;
+    @FXML   private TextField fieldProfCode;
+    @FXML   private TextField fieldProfName;
+    @FXML   private TextField filterProfession;
+    @FXML   private Button btnAddProf;
+    @FXML   private Button btnDeleteProf;
+    @FXML   private Button btnSaveProf;
+    @FXML   private ComboBox cbDepartment;
+    @FXML   private ComboBox cbNewProfession;
+    @FXML   private Button btnAddReplace;
+    @FXML   private Button btnDeleteReplace;
+    @FXML   private Button btnSaveReplace;
 
     ContextMenu contextMenu = new ContextMenu();
     MenuItem itemNew = new MenuItem("Добавить...");
@@ -58,6 +61,10 @@ public class ProfessionsFrameController {
         colProfName.setEditable(true);
         colProfCode.setCellValueFactory(new PropertyValueFactory<>("ProfessionCode"));
         colProfName.setCellValueFactory(new PropertyValueFactory<>("ProfessionName"));
+        colDepartment.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getDepartment().getDepartmentName()));
+        colNewProfession.setCellValueFactory(cellData -> new ReadOnlyStringWrapper(cellData.getValue().getNewProfession().getProfessionName()));
+
+
         tableProfessions.getSelectionModel().selectFirst();
         loadOnForm();
         loadContextMenu();
@@ -65,6 +72,7 @@ public class ProfessionsFrameController {
 
     private void loadOnForm() throws SQLException, ClassNotFoundException {
      fillProfessionsTable();
+     fillReplaceProfessionsTable();
 
     }
 
@@ -79,18 +87,26 @@ public class ProfessionsFrameController {
 
     }
 
+    private void fillReplaceProfessionsTable()throws SQLException, ClassNotFoundException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Query query = session.createQuery("FROM ReplaceableProfessionsEntity");
+        List<ReplaceableProfessionsEntity> replace_professions = query.list();
+        tableReplaceProfessions.setItems(FXCollections.observableList(replace_professions));
+        tableReplaceProfessions.getSelectionModel().selectFirst();
+        session.close();
+        getSelectedProfession();
+    }
+
 
     private void loadContextMenu(){
         contextMenu.getItems().addAll(itemNew, separatorMenuItem,itemDelete, itemEdit);
         itemDelete.setOnAction(event ->{
             ProfessionsEntity professionsEntity = tableProfessions.getSelectionModel().getSelectedItem();
-
             Session session = HibernateSessionFactory.getSessionFactory().openSession();
             session.beginTransaction();
             session.delete(professionsEntity);
             session.getTransaction().commit();
             session.close();
-
             getSelectedProfession();
             try {
                 fillProfessionsTable();
@@ -109,8 +125,6 @@ public class ProfessionsFrameController {
             session.save(professionsEntity);
             session.getTransaction().commit();
             session.close();
-
-
             try {
                 fillProfessionsTable();
             } catch (SQLException e) {
@@ -140,8 +154,6 @@ public class ProfessionsFrameController {
         }
     }
 
-
-
     @FXML
     private void saveProfession() throws SQLException, ClassNotFoundException {
         String newProfessionName = fieldProfName.getText();
@@ -154,13 +166,10 @@ public class ProfessionsFrameController {
         session.update(professionsEntity);
         session.getTransaction().commit();
         session.close();
-
-
         fillProfessionsTable();
     }
     @FXML
     private void newProfession() throws SQLException, ClassNotFoundException {
-
         ProfessionsEntity professionsEntity = new ProfessionsEntity();
         professionsEntity.setProfessionName("Новая профессия");
         professionsEntity.setProfessionCode(-1);
@@ -169,8 +178,6 @@ public class ProfessionsFrameController {
         session.save(professionsEntity);
         session.getTransaction().commit();
         session.close();
-
-
         fillProfessionsTable();
     }
     @FXML
@@ -181,10 +188,19 @@ public class ProfessionsFrameController {
         session.delete(professionsEntity);
         session.getTransaction().commit();
         session.close();
-
-
         fillProfessionsTable();
     }
+    @FXML    private void findProfession() throws SQLException, ClassNotFoundException {
+        Session session = HibernateSessionFactory.getSessionFactory().openSession();
+        Query query = session.createQuery("FROM ProfessionsEntity where Profession_Name like :profession");
+        query.setParameter("profession","%"+filterProfession.getText()+"%");
+        List<ProfessionsEntity> professions = query.list();
+        tableProfessions.setItems(FXCollections.observableList(professions));
+        tableProfessions.getSelectionModel().selectFirst();
+        session.close();
+        getSelectedProfession();
+    }
+
 
 
 

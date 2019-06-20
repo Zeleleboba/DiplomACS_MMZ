@@ -8,16 +8,15 @@
     <property name="connection.url">jdbc:sqlserver://localhost:1433;database=ACS_WORK_COPY</property>
     <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
     <property name="connection.username">admin</property>
-    <property name="connection.password">Jaguar110</property>
+    <property name="connection.password">Password1</property>
 
-    <mapping class="Diplom.hibernate.dao.DetailsEntity"/>
-    <mapping class="Diplom.hibernate.dao.OperationsEntity"/>
-    <mapping class="Diplom.hibernate.dao.OrdersEntity"/>
     <mapping class="Diplom.hibernate.dao.ProfessionsEntity"/>
 
     <mapping class="Diplom.hibernate.dao.WorkersEntity"/>
     <mapping class="Diplom.hibernate.dao.DepartmentsSectionsEntity"/>
     <mapping class="Diplom.hibernate.dao.StaffCalculationEntity"/>
+    <mapping class="Diplom.hibernate.dao.ReplaceableProfessionsEntity"/>
+    <mapping class="Diplom.hibernate.dao.WorkingDemandEntity"/>
 
 
   </session-factory>

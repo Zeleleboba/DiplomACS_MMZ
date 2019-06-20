@@ -7,23 +7,23 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 
 public class AppMain extends Application {
-
     private Stage primaryStage;
     private BorderPane rootLayout;
 
     public void initRootLayout() {
         try {
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(AppMain.class.getResource("/Frames/ParentFrame.fxml"));
+            loader.setLocation(AppMain.class.getResource("/Frames/LogFrame.fxml"));
             rootLayout = loader.load();
             Scene scene = new Scene(rootLayout);
+
             primaryStage.getIcons().add(new Image("/images/snail.png"));
             primaryStage.setScene(scene);
+            primaryStage.setResizable(false);
             primaryStage.show();
         }
         catch (IOException e) {

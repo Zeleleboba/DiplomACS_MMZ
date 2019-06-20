@@ -42,9 +42,6 @@ public class ProfessionsEntity {
     }
 
 
-
-
-
     public void setProfessionName(String professionName) {
         this.professionName = professionName;
     }

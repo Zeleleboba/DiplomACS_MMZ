@@ -4,6 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +17,7 @@ import javafx.scene.input.SwipeEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Stack;
@@ -21,16 +25,18 @@ import java.util.Stack;
 public class ParentFrameController {
     @FXML   private TreeView<String> treeViewACS;
     @FXML   private BorderPane bpParent;
-
+    @FXML   private MenuItem miExit;
+    @FXML   private MenuItem miAbout;
     @FXML   private ToggleButton tbtnShowTree;
     private TreeItem<String> workers = new TreeItem<String>("Персонал");
+
     private TreeItem<String> departments = new TreeItem<String>("Цеха");
 
     private TreeItem<String> details = new TreeItem<String>("Номенклатура деталей");
 
     private TreeItem<String> professions = new TreeItem<String>("Профессии");
-    private TreeItem<String> analyze = new TreeItem<String>("Анализ");
-    private TreeItem<String> data_form = new TreeItem<String>("Данные");
+    private TreeItem<String> analyze = new TreeItem<String>("Расчет числености");
+    private TreeItem<String> data_form = new TreeItem<String>("Справочники");
     private TreeItem<String> calendar = new TreeItem<String>("Производственный календарь");
 
     TreeItem<String> demand = new TreeItem<String>("Потребность в нормо-часах");
@@ -48,6 +54,7 @@ public class ParentFrameController {
             departments.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/department.png"),iconWidth,iconHeight, false, true)));
             professions.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/profession.png"), iconWidth, iconHeight, false, true)));
             analyze.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/calculate.png"), iconWidth, iconHeight, false, true)));
+            demand.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/time.png"), iconWidth, iconHeight, false, true)));
 
             ACS_MMZ.getChildren().addAll(data_form, analyze);
             ACS_MMZ.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/snail.png"), iconWidth, iconHeight, false, true)));
@@ -61,8 +68,6 @@ public class ParentFrameController {
 
         FXMLLoader loader_main = new FXMLLoader();
         loader_main.setLocation(ParentFrameController.class.getResource("/Frames/MainFrame.fxml"));
-
-
         bpParent.setCenter(loader_main.load());
         treeViewACS.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
@@ -90,15 +95,12 @@ public class ParentFrameController {
                 }
                 anchor_pane_get = loader.load();
                 bpParent.setCenter(anchor_pane_get);
-
             }
             catch (Exception e) {
                 e.printStackTrace();
             }
         });
-
-
-
+        menu_items_actions();
     }
 
     public void hideTree(){
@@ -122,4 +124,30 @@ public class ParentFrameController {
     }
 
 
+
+    public void menu_items_actions(){
+        miExit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Выйти");
+                alert.setHeaderText("Вы действительно хотите выйти?");
+                alert.setContentText("Текущий сеанс будет закрыт!");
+                alert.showAndWait();
+                System.exit(0);
+            }
+        });
+        miAbout.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FXMLLoader loader_main = new FXMLLoader();
+                loader_main.setLocation(ParentFrameController.class.getResource("/Frames/AboutFrame.fxml"));
+                try {
+                    bpParent.setCenter(loader_main.load());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

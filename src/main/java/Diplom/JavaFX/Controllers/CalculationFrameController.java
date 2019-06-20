@@ -1,5 +1,7 @@
 package Diplom.JavaFX.Controllers;
 
+import Diplom.AppMain;
+import Diplom.hibernate.dao.WorkingDemandEntity;
 import Diplom.hibernate.util.DBUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
@@ -8,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -16,11 +20,14 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.usermodel.Cell;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.ResultSet;
@@ -38,6 +45,9 @@ public class CalculationFrameController {
     @FXML private DatePicker dpOpenDate;
     @FXML private DatePicker dpCloseDate;
     @FXML private Button btnCalculate;
+    @FXML private Button btnExportToGrid;
+    @FXML private Button btnReplaceProf;
+
     @FXML private ComboBox cbDepartments;
     @FXML private ComboBox cbAreas;
     @FXML private ComboBox cbProfessions;
@@ -69,6 +79,8 @@ public class CalculationFrameController {
     @FXML private TableColumn colWorkersToMove;
     final CategoryAxis xAxis = new CategoryAxis();
     final NumberAxis yAxis = new NumberAxis();
+    ObservableList<ObservableList<String>> data;
+
 
 
 
@@ -104,6 +116,9 @@ public class CalculationFrameController {
         AnchorPane.setTopAnchor(chartStaffCalc, 0.0);
         AnchorPane.setLeftAnchor(chartStaffCalc,0.0);
         AnchorPane.setBottomAnchor(chartStaffCalc, 0.0);
+        btnCalculate.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/ok.png"), 20, 20, false, true)));
+        btnExportToGrid.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/xls.png"), 20, 20, false, true)));
+        btnReplaceProf.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/images/workers.png"), 20, 20, false, true)));
         prepareData();
         loadContextMenu();
     }
@@ -355,7 +370,7 @@ public class CalculationFrameController {
                 +dpOpenDate.getValue().toString()+"','"+dpCloseDate.getValue().toString()+"'," +
                 param_overtime +", "+param_work_sat + ", " + param_area_move + ", " + param_department_move + ", " + param_replace;
         tableCalculation.getSelectionModel().selectFirst();
-        ObservableList<ObservableList<String>> data = FXCollections.observableArrayList();
+        data = FXCollections.observableArrayList();
 
         tableCalculation.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -463,7 +478,7 @@ public class CalculationFrameController {
             tableCalculation.isTableMenuButtonVisible();
             upperAnchorPane.getChildren().addAll(tableCalculation);
             AnchorPane.setBottomAnchor(tableCalculation,0.0);
-            AnchorPane.setTopAnchor(tableCalculation,70.0);
+            AnchorPane.setTopAnchor(tableCalculation,100.0);
 
         } catch (SQLException | ClassNotFoundException e) {
             System.out.println("SQL select operation has been failed: " + e);
@@ -541,12 +556,24 @@ public class CalculationFrameController {
             if((i - 5) % 4 ==0){
 
                 series_start_working.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-3).toString())));
+
                 series_working.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-2).toString())));
                 series_required.getData().add(new XYChart.Data(list_row.get(i), Double.parseDouble(list_row.get(i-1).toString())));
             }
 
         }
         series_start_working.setName("Нормочасов начальное");
+
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(CalculationFrameController.class.getResource("/Frames/CalculationFrame.fxml"));
+        try {
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add("css/chart.css");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
         series_working.setName("Нормочасов оптимизированное");
         series_required.setName("Нормочасов необходимо.");
@@ -558,44 +585,11 @@ public class CalculationFrameController {
             @Override
             public void handle(ActionEvent event) {
 
-
-                try {
-                    Workbook book = new HSSFWorkbook();
-                    Sheet sheet = book.createSheet("Дополнительная информация");
-                    Row row = sheet.createRow(0);
-
-
-                    Cell name = row.createCell(0);
-                    name.setCellValue("John");
-
-                    Cell birthdate = row.createCell(1);
-                    DataFormat format = book.createDataFormat();
-
-
-                    CellStyle dateStyle = book.createCellStyle();
-                    dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy"));
-                    birthdate.setCellStyle(dateStyle);
-
-
-
-                    birthdate.setCellValue(new Date(110, 10, 10));
-                    sheet.autoSizeColumn(1);
-
-
-
-                    book.write(new FileOutputStream("C:/Users/bukho/Desktop/export.xls"));
-                    book.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
             }
         });
 
-        menuExport.getItems().addAll(itemPDF, itemXLS);
+        menuExport.getItems().addAll(itemXLS);
         contextMenu.getItems().addAll(menuExport);
-
-
-
 
         tableAdditionalInformation.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
             @Override
@@ -603,5 +597,72 @@ public class CalculationFrameController {
                 contextMenu.show(tableAdditionalInformation, event.getScreenX(), event.getScreenY());
             }
         });
+    }
+
+
+
+    @FXML   private void exportData() throws IOException {
+        Workbook book = new HSSFWorkbook();
+        Sheet sheet = book.createSheet("Статиска по планированию персонала");
+        int i = 1;
+        int count_columns = data.get(0).size();
+        System.out.println(count_columns+"");
+        DataFormat format = book.createDataFormat();
+        CellStyle dateStyle = book.createCellStyle();
+        dateStyle.setDataFormat(format.getFormat("dd.mm.yyyy"));
+
+        Row row = sheet.createRow(0);
+
+        org.apache.poi.ss.usermodel.Cell departmentCode = row.createCell(0);
+        org.apache.poi.ss.usermodel.Cell departmentName = row.createCell(1);
+        org.apache.poi.ss.usermodel.Cell areaCode= row.createCell(2);
+        org.apache.poi.ss.usermodel.Cell areaName = row.createCell(3);
+        org.apache.poi.ss.usermodel.Cell professionCode = row.createCell(4);
+        org.apache.poi.ss.usermodel.Cell professionName = row.createCell(5);
+
+
+        departmentName.setCellValue("Номер");
+        departmentCode.setCellValue("Название");
+        areaCode.setCellValue("Номер");
+        areaName.setCellValue("Название");
+        professionName.setCellValue("Шифр");
+        professionCode.setCellValue("Название");
+
+
+
+
+
+        for(ObservableList<String> row_tab : data){
+            row = sheet.createRow(i);
+            departmentCode= row.createCell(0);
+            departmentName= row.createCell(3);
+            areaCode = row.createCell(1);
+            areaName= row.createCell(4);
+            professionCode = row.createCell(2);
+            professionName = row.createCell(5);
+            departmentCode.setCellValue(row_tab.get(0));
+            departmentName.setCellValue(row_tab.get(3));
+            areaCode.setCellValue(row_tab.get(1));
+            areaName.setCellValue(row_tab.get(4));
+            professionCode.setCellValue(row_tab.get(2));
+            professionName.setCellValue(row_tab.get(5));
+
+
+
+
+
+
+            sheet.autoSizeColumn(i);
+            i++;
+        }
+        Stage secondStage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Сохранить данные");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Книга xls","*.xls"));
+        File file = fileChooser.showSaveDialog(secondStage);
+        if (file != null) {
+            book.write(new FileOutputStream(file.getPath()));
+            book.close();
+        }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.WorkersFrameController">
+<AnchorPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Diplom.JavaFX.Controllers.WorkersFrameController">
    <children>
       <SplitPane dividerPositions="0.6414141414141414" layoutX="326.0" layoutY="110.0" prefHeight="567.0" prefWidth="902.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -70,7 +71,7 @@
                   </BorderPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="-Infinity" prefHeight="606.0" prefWidth="357.0">
+          <AnchorPane minHeight="-Infinity" prefHeight="606.0" prefWidth="357.0" style="-fx-background-color: white;">
                <children>
                   <GridPane layoutX="10.0" prefHeight="454.0" prefWidth="338.0" AnchorPane.bottomAnchor="176.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                     <columnConstraints>
@@ -90,27 +91,67 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <TextField fx:id="fieldWorkPatronymic" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="fieldWorkPatronymic" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></TextField>
                         <TextField fx:id="fieldWorkProf" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="fieldWorkName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Отделение:" GridPane.rowIndex="5" />
-                        <Label text="Отчество:" GridPane.rowIndex="2" />
-                        <Label text="Профессия:" GridPane.rowIndex="3" />
-                        <Label text="Цех:" GridPane.rowIndex="4" />
-                        <Label text="Имя:" GridPane.rowIndex="1" />
-                        <Label text="Фамилия:" />
-                        <TextField fx:id="fieldWorkSurname" GridPane.columnIndex="1" />
-                        <Label text="Выработка:" GridPane.rowIndex="6" />
+                        <TextField fx:id="fieldWorkName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></TextField>
+                        <Label text="Отделение:" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <Label text="Отчество:" GridPane.rowIndex="2">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <Label text="Профессия:" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <Label text="Цех:" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <Label text="Имя:" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <Label text="Фамилия:">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
+                        <TextField fx:id="fieldWorkSurname" GridPane.columnIndex="1">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></TextField>
+                        <Label text="Выработка:" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets></Label>
                         <Button fx:id="btnWorkSave" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Сохранить" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                         <Button fx:id="btnWorkShow" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Загрузить" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER" />
                         <Button fx:id="btnWorkAdd" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Добавить" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
                         <Button fx:id="btnWorkDel" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Удалить" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-                        <Button fx:id="btnWorkSearch" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" text="Найти" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
-                        <TextField fx:id="fieldWorkSearch" GridPane.rowIndex="9" />
-                        <TextField fx:id="fieldWorkTime" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <ComboBox fx:id="cbWorkProf" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <ComboBox fx:id="cbWorkDep" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <ComboBox fx:id="cbWorkArea" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="fieldWorkTime" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></TextField>
+                        <ComboBox fx:id="cbWorkProf" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></ComboBox>
+                        <ComboBox fx:id="cbWorkDep" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></ComboBox>
+                        <ComboBox fx:id="cbWorkArea" prefHeight="25.0" prefWidth="205.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <opaqueInsets>
+                              <Insets right="20.0" />
+                           </opaqueInsets></ComboBox>
                      </children>
                   </GridPane>
                </children>
